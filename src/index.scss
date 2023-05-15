@@ -1,0 +1,216 @@
+@use "./styles/fonts";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+#outer-container {
+  height: 100vh;
+  position: relative;
+}
+
+.header {
+  width: 100vw;
+}
+
+.header-menu {
+  background-color: #ffd700;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.header-spacer {
+  width: 24px;
+  margin-right: 14px;
+}
+
+.header-img {
+  height: 120px;
+  background-image: url("../public/images/kindergarten_header.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header-icon-account {
+  margin-left: 14px;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/images/kindergarten.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+
+  .headline-box {
+    display: flex;
+    justify-content: center;
+
+    .headline {
+      font-weight: 500;
+      margin: 20px 0;
+    }
+  }
+
+  .paragraph {
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    // word-break: break-word;
+  }
+
+  .paragraph-headline {
+    line-height: 1.5;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  .paragraph-pic {
+    height: 200px;
+
+    &.right {
+      padding-left: 16px;
+      float: right;
+    }
+
+    &.left {
+      padding-right: 16px;
+      float: left;
+    }
+  }
+}
+
+.button-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 18px;
+  height: 15px;
+  right: 17px;
+  top: 140.5px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #000000;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #222222;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #000;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #fff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #000;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.btn__up {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #fff;
+  border: 3px solid #343434;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  color: #343434;
+}
+
+.input-box {
+  margin: auto;
+  width: 250px;
+}

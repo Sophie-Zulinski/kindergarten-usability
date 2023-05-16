@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { ArrowForward, AccountCircle } from "@mui/icons-material";
 import { useEffect } from "react";
 
 function LandingPage() {
@@ -19,7 +18,7 @@ function LandingPage() {
       <br />
       <Button
         variant="contained"
-        startIcon={<ArrowForwardIcon />}
+        startIcon={<ArrowForward />}
         sx={{
           width: 250,
         }}
@@ -29,7 +28,7 @@ function LandingPage() {
       <br />
       <Button
         variant="outlined"
-        startIcon={<AccountCircleIcon />}
+        startIcon={<AccountCircle />}
         className="landing-page-outlined-btn"
         sx={{
           color: "#000000",

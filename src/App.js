@@ -8,6 +8,7 @@ import InformationPage from "./pages/InformationPage";
 import SearchPage from "./pages/SearchPage";
 import ErrorPage from "./pages/ErrorPage";
 import ResultsPage from "./pages/ResultsPage";
+import DetailPage from "./pages/DetailPage";
 import { useEffect, useState } from "react";
 
 const titles = {
@@ -30,6 +31,10 @@ const titles = {
   "/results": {
     header: "Suchergebnisse",
     document: "Kindergartenwahl: Suchergebnisse",
+  },
+  "/details": {
+    header: "Details",
+    document: "Kindergartenwahl: Details",
   },
 };
 
@@ -82,6 +87,10 @@ function App() {
             <Route
               path="/results"
               element={<ResultsPage title={documentTitle} />}
+            />
+            <Route
+              path="/details"
+              element={<DetailPage title={documentTitle} />}
             />
             <Route path="*" element={<ErrorPage title="404 Not found" />} />
           </Routes>

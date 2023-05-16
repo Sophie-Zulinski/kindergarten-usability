@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Button,
-  TextField,
   InputLabel,
   MenuItem,
   FormControl,
@@ -12,37 +10,11 @@ import {
   ListItemText,
   MobileStepper,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Search } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { StyledMainButton } from "../components/StyledMainButton";
-
-const districts = [
-  "",
-  "1. Bezirk",
-  "2. Bezirk",
-  "3. Bezirk",
-  "4. Bezirk",
-  "5. Bezirk",
-  "6. Bezirk",
-  "7. Bezirk",
-  "8. Bezirk",
-  "9. Bezirk",
-  "10. Bezirk",
-  "11. Bezirk",
-  "12. Bezirk",
-  "13. Bezirk",
-  "14. Bezirk",
-  "15. Bezirk",
-  "16. Bezirk",
-  "17. Bezirk",
-  "18. Bezirk",
-  "19. Bezirk",
-  "20. Bezirk",
-  "21. Bezirk",
-  "22. Bezirk",
-  "23. Bezirk",
-];
+import { districts } from "../data/districts";
 
 // const groupSizeOptions = [
 //   {
@@ -125,25 +97,19 @@ function SearchPage({ title }) {
     const {
       target: { value },
     } = event;
-    setAllOpeningHours(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setAllOpeningHours(typeof value === "string" ? value.split(",") : value);
   };
 
   const handleAgeGroupsChange = (event) => {
     const {
       target: { value },
     } = event;
-    setAllAgeGroups(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setAllAgeGroups(typeof value === "string" ? value.split(",") : value);
   };
 
   return (
     <div className="container col">
-      <div className="headline-box">
+      <div className="headline-box col center">
         <MobileStepper
           variant="dots"
           steps={4}
@@ -286,14 +252,12 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
       </div>
-      <div className="button-flex-container">
+      <div className="col center">
         <StyledMainButton
-          startIcon={<SearchIcon />}
+          startIcon={<Search />}
           variant="contained"
           className="btn__start"
           sx={{
-            width: 250,
-            marginTop: "24px",
             marginBottom: "100px",
           }}
           onClick={startSearch}

@@ -81,16 +81,21 @@ h5 {
   flex-direction: row;
 }
 
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.vert-center {
+  align-items: center;
+}
+
 .container {
   padding-left: 16px;
   padding-right: 16px;
   position: relative;
 
   .headline-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-top: 20px;
 
     .headline {
@@ -109,7 +114,7 @@ h5 {
 
   .paragraph-headline {
     line-height: 1.5;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 7px;
   }
 
@@ -126,11 +131,6 @@ h5 {
       float: left;
     }
   }
-}
-
-.button-flex-container {
-  display: flex;
-  justify-content: center;
 }
 
 /* Position and sizing of burger button */
@@ -224,8 +224,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: relative;
 }
 
-.result-box {
-  padding: 16px 0 16px 16px;
+.box {
+  padding: 16px;
 }
 
 .result-pic {
@@ -234,10 +234,36 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .result-headline {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 500;
   margin: 16px 0;
 }
 
 .result-icon {
   margin-right: 7px;
+}
+
+.bottomline {
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.availability {
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.chip-box {
+  margin-top: 25px;
+  justify-content: space-around;
+}
+
+.chip-box-col {
+  gap: 15px;
+}
+
+.kiga-text {
+  line-height: 1.5;
+  margin-top: 25px;
 }

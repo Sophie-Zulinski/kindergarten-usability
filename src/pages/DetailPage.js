@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
 import { Paper, MobileStepper, LinearProgress, Chip } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { kindergartens } from "../data/kindergartens";
 import {
   ArrowBack,
@@ -18,6 +18,8 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 
 function DetailPage({ title }) {
   const { pathname, state } = useLocation();
+  const navigate = useNavigate();
+  const availabilityRate = Math.floor(Math.random() * 100);
 
   useEffect(() => {
     document.title = title;
@@ -31,13 +33,22 @@ function DetailPage({ title }) {
 
   const { kigaIndex } = state;
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate("/inquiry", {
+      state: {
+        kigaIndex,
+      },
+    });
+  };
+
   return (
     <div className="container col">
       <ScrollToTopButton />
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"
-          steps={4}
+          steps={5}
           activeStep={2}
           position="static"
           backButton={null}
@@ -83,12 +94,10 @@ function DetailPage({ title }) {
                 <p>{kindergartens[kigaIndex].publicOrPrivate}</p>
               </div>
             </div>
-            <p className="availability">
-              {Math.floor(Math.random() * 100)}% Auslastung
-            </p>
+            <p className="availability">{availabilityRate}% Auslastung</p>
             <LinearProgress
               variant="determinate"
-              value={75}
+              value={availabilityRate}
               sx={{
                 height: "10px",
                 borderRadius: "5px",
@@ -148,7 +157,7 @@ function DetailPage({ title }) {
               Wir befinden uns{" "}
               <b>
                 mitten im Zentrum des wunderschönen 3. Gemeindebezirks in Wien
-              </b>{" "}
+              </b>
               🏡 und{" "}
               <b>
                 bieten neben kleinen (S) auch mittelgroßen (M) Gruppengrößen
@@ -189,9 +198,9 @@ function DetailPage({ title }) {
           sx={{
             marginBottom: "25px",
           }}
-          // onClick={startSearch}
+          onClick={handleClick}
         >
-          <Link to="/search">Anfrage schicken</Link>
+          <Link to="/inquiry">Anfrage schicken</Link>
         </StyledMainButton>
 
         <h3 className="bottomline">Andere Kindergärten ansehen?</h3>

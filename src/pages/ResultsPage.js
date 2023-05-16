@@ -37,7 +37,7 @@ function ResultsPage({ title }) {
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"
-          steps={4}
+          steps={5}
           activeStep={1}
           position="static"
           backButton={null}

@@ -245,6 +245,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bottomline {
   font-weight: 500;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .availability {
@@ -266,4 +267,19 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .kiga-text {
   line-height: 1.5;
   margin-top: 25px;
+}
+
+.privacy {
+  margin: 25px 0;
+}
+
+.success-icon {
+  font-size: 5em;
+  text-align: center;
+}
+
+.success-text {
+  width: 90%;
+  margin-bottom: 20px;
+  line-height: 2;
 }

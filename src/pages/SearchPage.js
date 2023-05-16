@@ -112,7 +112,7 @@ function SearchPage({ title }) {
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"
-          steps={4}
+          steps={5}
           activeStep={0}
           position="static"
           backButton={null}

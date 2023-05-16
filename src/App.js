@@ -10,6 +10,8 @@ import ErrorPage from "./pages/ErrorPage";
 import ResultsPage from "./pages/ResultsPage";
 import DetailPage from "./pages/DetailPage";
 import { useEffect, useState } from "react";
+import InquiryPage from "./pages/InquiryPage";
+import SuccessPage from "./pages/SuccessPage";
 
 const titles = {
   "/": {
@@ -35,6 +37,14 @@ const titles = {
   "/details": {
     header: "Details",
     document: "Kindergartenwahl: Details",
+  },
+  "/inquiry": {
+    header: "Anfrage senden",
+    document: "Kindergartenwahl: Anfrage senden",
+  },
+  "/success": {
+    header: "Anfrage",
+    document: "Kindergartenwahl: Anfrage versandt",
   },
 };
 
@@ -91,6 +101,14 @@ function App() {
             <Route
               path="/details"
               element={<DetailPage title={documentTitle} />}
+            />
+            <Route
+              path="/inquiry"
+              element={<InquiryPage title={documentTitle} />}
+            />
+            <Route
+              path="/success"
+              element={<SuccessPage title={documentTitle} />}
             />
             <Route path="*" element={<ErrorPage title="404 Not found" />} />
           </Routes>

@@ -25,15 +25,6 @@ function KindergartenShow({ kiga, index }) {
 
   return (
     <Paper key={index} className="result-container">
-      <Button
-        variant="contained"
-        className="result-button"
-        startIcon={<Loupe />}
-        sx={{ position: "absolute", bottom: "15px", right: "15px" }}
-        onClick={showDetails}
-      >
-        <Link to="/details">Details</Link>
-      </Button>
       <div className="box col">
         <img
           alt="Kindergarten"
@@ -68,6 +59,15 @@ function KindergartenShow({ kiga, index }) {
           </div>
         </div>
       </div>
+      <Button
+        variant="contained"
+        className="result-button"
+        startIcon={<Loupe />}
+        sx={{ position: "absolute", bottom: "15px", right: "15px" }}
+        onClick={showDetails}
+      >
+        <Link to="/details">Details</Link>
+      </Button>
     </Paper>
   );
 }

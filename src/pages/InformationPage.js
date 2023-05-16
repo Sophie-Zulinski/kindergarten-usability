@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import { RocketLaunch } from "@mui/icons-material";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { Link } from "react-router-dom";
 import { StyledMainButton } from "../components/StyledMainButton";
@@ -119,7 +119,7 @@ function InformationPage({ title }) {
         </p>
         <div className="col center">
           <StyledMainButton
-            startIcon={<RocketLaunchIcon />}
+            startIcon={<RocketLaunch />}
             variant="contained"
             className="btn__start"
             sx={{

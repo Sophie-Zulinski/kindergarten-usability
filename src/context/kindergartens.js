@@ -1,3 +1,5 @@
+// NOT USED
+
 import { createContext, useState } from "react";
 
 const KindergartenContext = createContext();

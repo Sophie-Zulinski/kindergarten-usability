@@ -10,30 +10,69 @@ import {
   OutlinedInput,
   Checkbox,
   ListItemText,
+  MobileStepper,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { StyledMainButton } from "../components/StyledMainButton";
 
-const radiusOptions = [
+const districts = [
   "",
-  "weniger als 15km",
-  "bis zu 30km",
-  "bis zu 50km",
-  "mehr als 50km",
+  "1. Bezirk",
+  "2. Bezirk",
+  "3. Bezirk",
+  "4. Bezirk",
+  "5. Bezirk",
+  "6. Bezirk",
+  "7. Bezirk",
+  "8. Bezirk",
+  "9. Bezirk",
+  "10. Bezirk",
+  "11. Bezirk",
+  "12. Bezirk",
+  "13. Bezirk",
+  "14. Bezirk",
+  "15. Bezirk",
+  "16. Bezirk",
+  "17. Bezirk",
+  "18. Bezirk",
+  "19. Bezirk",
+  "20. Bezirk",
+  "21. Bezirk",
+  "22. Bezirk",
+  "23. Bezirk",
 ];
 
+// const groupSizeOptions = [
+//   {
+//     "": "",
+//   },
+//   {
+//     S: "weniger als 5 Kinder",
+//   },
+//   {
+//     M: "bis zu 10 Kinder",
+//   },
+//   {
+//     L: "bis zu 15 Kinder",
+//   },
+//   {
+//     XL: "mehr als 15 Kinder",
+//   },
+// ];
+
 const groupSizeOptions = [
-  "",
-  "S - weniger als 5 Kinder",
-  "M - bis zu 10 Kinder",
-  "L - bis zu 15 Kinder",
-  "XL - mehr als 15 Kinder",
+  "weniger als 5 Kinder",
+  "bis zu 10 Kinder",
+  "bis zu 15 Kinder",
+  "mehr als 15 Kinder",
 ];
 
 const publicOrPrivateOptions = ["", "Öffentlich", "Privat"];
 
 const openingHoursOptions = [
+  "H - Stundenweise",
   "VM - Vormittags",
   "NM - Nachmittags",
   "GT - Ganztags",
@@ -54,11 +93,9 @@ const MenuProps = {
 
 function SearchPage({ title }) {
   const navigate = useNavigate();
-  const [address, setAddress] = useState("");
-  const [addressError, setAddressError] = useState(false);
 
-  const [radius, setRadius] = useState("");
-  const [radiusError, setRadiusError] = useState(false);
+  const [district, setDistrict] = useState("");
+  const [districtError, setDistrictError] = useState(false);
 
   const [allOpeningHours, setAllOpeningHours] = useState([]);
   const [groupSize, setGroupSize] = useState("");
@@ -71,9 +108,17 @@ function SearchPage({ title }) {
 
   const startSearch = (e) => {
     e.preventDefault();
-    setAddressError(address === "" ? true : false);
-    setRadiusError(radius === "" ? true : false);
-    address !== "" && radius !== "" && navigate("/results");
+    setDistrictError(district === "" ? true : false);
+    district !== "" &&
+      navigate("/results", {
+        state: {
+          district,
+          allOpeningHours,
+          groupSize,
+          allAgeGroups,
+          publicOrPrivate,
+        },
+      });
   };
 
   const handleOpeningHoursChange = (event) => {
@@ -99,46 +144,42 @@ function SearchPage({ title }) {
   return (
     <div className="container col">
       <div className="headline-box">
+        <MobileStepper
+          variant="dots"
+          steps={4}
+          activeStep={0}
+          position="static"
+          backButton={null}
+          nextButton={null}
+          sx={{ marginBottom: "10px" }}
+        />
         <h3 className="headline">Nenne uns zunächst deine Suchkriterien...</h3>
       </div>
       <div className="input-box">
-        <TextField
-          required
-          color="secondary"
-          fullWidth
-          sx={{ marginBottom: "15px" }}
-          id="address"
-          label="Wohnadresse"
-          variant="outlined"
-          onChange={(e) => setAddress(e.target.value)}
-          error={addressError}
-          helperText={addressError && "Bitte Wohnadresse angeben!"}
-        />
-
         <FormControl
           required
           color="secondary"
           fullWidth
           sx={{ marginBottom: "15px" }}
-          error={radiusError}
+          error={districtError}
         >
-          <InputLabel id="radius">Umkreis</InputLabel>
+          <InputLabel id="district">Bezirk</InputLabel>
           <Select
-            labelId="radius"
-            id="radius"
-            value={radius}
-            label="Umkreis"
-            onChange={(e) => setRadius(e.target.value)}
+            labelId="district"
+            id="district"
+            value={district}
+            label="Bezirk"
+            onChange={(e) => setDistrict(e.target.value)}
           >
-            {radiusOptions.map((radius) => (
-              <MenuItem key={radius} value={radius}>
-                {radius}
+            {districts.map((district) => (
+              <MenuItem key={district} value={district}>
+                {district}
               </MenuItem>
             ))}
           </Select>
-          {radiusError ? (
+          {districtError ? (
             <FormHelperText sx={{ color: "red" }}>
-              Bitte Umkreis angeben!
+              Bitte Bezirk angeben!
             </FormHelperText>
           ) : (
             ""
@@ -185,9 +226,20 @@ function SearchPage({ title }) {
           >
             {groupSizeOptions.map((groupSize) => (
               <MenuItem key={groupSize} value={groupSize}>
-                {groupSize}
+                <Checkbox
+                  color="secondary"
+                  checked={allAgeGroups.indexOf(groupSize) > -1}
+                />
+                <ListItemText primary={groupSize} />
               </MenuItem>
             ))}
+            {/* {groupSizeOptions.map((groupSize) => {
+              Object.keys(groupSize).map((key) => {
+                <MenuItem key={key} value={groupSize[key]}>
+                  {groupSize}
+                </MenuItem>;
+              });
+            })} */}
           </Select>
         </FormControl>
 
@@ -235,7 +287,7 @@ function SearchPage({ title }) {
         </FormControl>
       </div>
       <div className="button-flex-container">
-        <Button
+        <StyledMainButton
           startIcon={<SearchIcon />}
           variant="contained"
           className="btn__start"
@@ -247,7 +299,7 @@ function SearchPage({ title }) {
           onClick={startSearch}
         >
           <Link to="/search">Suche starten</Link>
-        </Button>
+        </StyledMainButton>
       </div>
     </div>
   );

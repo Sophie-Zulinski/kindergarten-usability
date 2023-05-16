@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useReactPath = () => {
+// const useReactPath = () => {
   const [path, setPath] = useState(window.location.pathname);
 
   const listenToPopstate = () => {

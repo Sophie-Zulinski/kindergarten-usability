@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import InformationPage from "./pages/InformationPage";
 import SearchPage from "./pages/SearchPage";
 import ErrorPage from "./pages/ErrorPage";
+import ResultsPage from "./pages/ResultsPage";
 import { useEffect, useState } from "react";
 
 const titles = {
@@ -26,12 +27,16 @@ const titles = {
     header: "Suche",
     document: "Kindergartenwahl: Suche",
   },
+  "/results": {
+    header: "Suchergebnisse",
+    document: "Kindergartenwahl: Suchergebnisse",
+  },
 };
 
 function App() {
   const [showLandingPage, setShowLandingPage] = useState(true);
   const [pageTitle, setPageTitle] = useState("404 Not found");
-  const [documentTitle, setDocumentTitle] = useState("");
+  const [documentTitle, setDocumentTitle] = useState("404 Not found");
   const location = useLocation();
 
   useEffect(() => {
@@ -40,7 +45,7 @@ function App() {
       setDocumentTitle(titles[location.pathname].document);
     } else {
       setPageTitle("404 Not found");
-      document.title = "404 Not found";
+      setDocumentTitle("404 Not found");
     }
 
     location.pathname === "/" || location.pathname === "/home"
@@ -73,6 +78,10 @@ function App() {
             <Route
               path="/search"
               element={<SearchPage title={documentTitle} />}
+            />
+            <Route
+              path="/results"
+              element={<ResultsPage title={documentTitle} />}
             />
             <Route path="*" element={<ErrorPage title="404 Not found" />} />
           </Routes>

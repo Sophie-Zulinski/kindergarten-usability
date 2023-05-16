@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { Link } from "react-router-dom";
+import { StyledMainButton } from "../components/StyledMainButton";
 
 function InformationPage({ title }) {
   useEffect(() => {
@@ -118,7 +119,7 @@ function InformationPage({ title }) {
           oder vegane Ernährung? Achte auf die entsprechenden Tags!
         </p>
         <div className="button-flex-container">
-          <Button
+          <StyledMainButton
             startIcon={<RocketLaunchIcon />}
             variant="contained"
             className="btn__start"
@@ -129,7 +130,7 @@ function InformationPage({ title }) {
             }}
           >
             <Link to="/search">Los geht's!</Link>
-          </Button>
+          </StyledMainButton>
         </div>
       </div>
     </>

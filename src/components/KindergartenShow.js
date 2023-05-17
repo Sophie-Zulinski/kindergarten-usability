@@ -11,8 +11,16 @@ import { Paper, Button } from "@mui/material";
 import { kindergartens } from "../data/kindergartens";
 import { Link, useNavigate } from "react-router-dom";
 
-function KindergartenShow({ kiga, index }) {
+function KindergartenShow({ kiga, index, searchParams }) {
   const navigate = useNavigate();
+
+  const {
+    district,
+    groupSize,
+    publicOrPrivate,
+    allOpeningHours,
+    allAgeGroups,
+  } = searchParams;
 
   const showDetails = (e) => {
     e.preventDefault();
@@ -39,7 +47,7 @@ function KindergartenShow({ kiga, index }) {
           </div>
           <div className="row vert-center">
             <LocationOn className="result-icon" />
-            <p>{kindergartens[index].district}</p>
+            <p>{district}</p>
           </div>
           <div className="row vert-center">
             <AccessTime className="result-icon" />

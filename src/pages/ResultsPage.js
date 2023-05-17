@@ -19,14 +19,22 @@ function ResultsPage({ title }) {
     }, 0);
   }, [pathname]);
 
-  // const { state } = useLocation();
-  // const {
-  //   district,
-  //   groupSize,
-  //   publicOrPrivate,
-  //   allOpeningHours,
-  //   allAgeGroups,
-  // } = state;
+  const { state } = useLocation();
+  const {
+    district,
+    groupSize,
+    publicOrPrivate,
+    allOpeningHours,
+    allAgeGroups,
+  } = state;
+
+  const searchParams = {
+    district,
+    groupSize,
+    publicOrPrivate,
+    allOpeningHours,
+    allAgeGroups,
+  };
 
   // filter logic
   // const filteredKigas = kindergartens.filter((kiga) => kiga.district === 3);
@@ -47,7 +55,12 @@ function ResultsPage({ title }) {
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
       {kindergartens.map((kiga, index) => (
-        <KindergartenShow key={index} kiga={kiga} index={index} />
+        <KindergartenShow
+          key={index}
+          kiga={kiga}
+          index={index}
+          searchParams={searchParams}
+        />
       ))}
       <div className="col center">
         <h3 className="bottomline">Nichts passendes dabei?</h3>

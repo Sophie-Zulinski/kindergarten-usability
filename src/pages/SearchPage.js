@@ -68,9 +68,8 @@ function SearchPage({ title }) {
 
   const [district, setDistrict] = useState("");
   const [districtError, setDistrictError] = useState(false);
-
   const [allOpeningHours, setAllOpeningHours] = useState([]);
-  const [groupSize, setGroupSize] = useState("");
+  const [allGroupSizes, setAllGroupSizes] = useState([]);
   const [allAgeGroups, setAllAgeGroups] = useState([]);
   const [publicOrPrivate, setPublicOrPrivate] = useState("");
 
@@ -86,7 +85,7 @@ function SearchPage({ title }) {
         state: {
           district,
           allOpeningHours,
-          groupSize,
+          allGroupSizes,
           allAgeGroups,
           publicOrPrivate,
         },
@@ -105,6 +104,13 @@ function SearchPage({ title }) {
       target: { value },
     } = event;
     setAllAgeGroups(typeof value === "string" ? value.split(",") : value);
+  };
+
+  const handleGroupSizeChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setAllGroupSizes(typeof value === "string" ? value.split(",") : value);
   };
 
   return (
@@ -160,12 +166,7 @@ function SearchPage({ title }) {
             multiple
             value={allOpeningHours}
             onChange={handleOpeningHoursChange}
-            input={
-              <OutlinedInput
-                id="select-multiple-chip"
-                label="Betreuungszeiten"
-              />
-            }
+            input={<OutlinedInput label="Betreuungszeiten" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
           >
@@ -184,17 +185,20 @@ function SearchPage({ title }) {
         <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
           <InputLabel id="group-size">Gruppengröße</InputLabel>
           <Select
-            labelId="group-size"
-            id="group-size"
-            value={groupSize}
-            label="Gruppengröße"
-            onChange={(e) => setGroupSize(e.target.value)}
+            labelId="groupSizes"
+            id="groupSizes"
+            multiple
+            value={allGroupSizes}
+            onChange={handleGroupSizeChange}
+            input={<OutlinedInput label="Gruppengröße" />}
+            renderValue={(selected) => selected.join(", ")}
+            MenuProps={MenuProps}
           >
             {groupSizeOptions.map((groupSize) => (
               <MenuItem key={groupSize} value={groupSize}>
                 <Checkbox
                   color="secondary"
-                  checked={allAgeGroups.indexOf(groupSize) > -1}
+                  checked={allGroupSizes.indexOf(groupSize) > -1}
                 />
                 <ListItemText primary={groupSize} />
               </MenuItem>
@@ -217,9 +221,7 @@ function SearchPage({ title }) {
             multiple
             value={allAgeGroups}
             onChange={handleAgeGroupsChange}
-            input={
-              <OutlinedInput id="select-multiple-chip" label="Altersgruppen" />
-            }
+            input={<OutlinedInput label="Altersgruppen" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
           >

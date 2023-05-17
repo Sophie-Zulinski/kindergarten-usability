@@ -26,9 +26,9 @@ function LandingPage() {
   return (
     <div className="landing-page">
       {showSpinner && (
-        <div className="loading-spinner row vertical-center">
+        <div className="snackbar snackbar-info row vertical-center">
           <CircularProgress size="1rem" sx={{ color: "white" }} />
-          <p className="loading-spinner-text">Applikation lädt...</p>
+          <p className="snackbar-text">Applikation lädt...</p>
         </div>
       )}
       <img
@@ -39,6 +39,7 @@ function LandingPage() {
       <br />
       <Button
         variant="contained"
+        disabled={showSpinner}
         startIcon={<ArrowForward />}
         sx={{
           width: 250,

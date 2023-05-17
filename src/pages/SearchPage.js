@@ -11,7 +11,7 @@ import {
   MobileStepper,
   CircularProgress,
 } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Search, ErrorOutline } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { StyledMainButton } from "../components/StyledMainButton";
 import { districts } from "../data/districts";
@@ -48,6 +48,7 @@ const MenuProps = {
 function SearchPage({ title }) {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
+  const [showSnackError, setShowSnackError] = useState(false);
 
   const [district, setDistrict] = useState("");
   const [districtError, setDistrictError] = useState(false);
@@ -64,27 +65,37 @@ function SearchPage({ title }) {
     e.preventDefault();
     setDistrictError(district === "" ? true : false);
     if (district !== "") {
-      setShowSpinner(true);
+      if (
+        allOpeningHours.length === 0 &&
+        allGroupSizes.length === 0 &&
+        allAgeGroups.length === 0 &&
+        publicOrPrivate === ""
+      ) {
+        setShowSnackError(true);
+      } else {
+        setShowSpinner(true);
 
-      setTimeout(() => {
-        setShowSpinner(false);
-        navigate("/results", {
-          state: {
-            kiga: {},
-            searchParams: {
-              district,
-              allOpeningHours,
-              allGroupSizes,
-              allAgeGroups,
-              publicOrPrivate,
+        setTimeout(() => {
+          setShowSpinner(false);
+          navigate("/results", {
+            state: {
+              kiga: {},
+              searchParams: {
+                district,
+                allOpeningHours,
+                allGroupSizes,
+                allAgeGroups,
+                publicOrPrivate,
+              },
             },
-          },
-        });
-      }, 3000);
+          });
+        }, 3000);
+      }
     }
   };
 
   const handleOpeningHoursChange = (event) => {
+    setShowSnackError(false);
     const {
       target: { value },
     } = event;
@@ -92,6 +103,7 @@ function SearchPage({ title }) {
   };
 
   const handleAgeGroupsChange = (event) => {
+    setShowSnackError(false);
     const {
       target: { value },
     } = event;
@@ -99,6 +111,7 @@ function SearchPage({ title }) {
   };
 
   const handleGroupSizeChange = (event) => {
+    setShowSnackError(false);
     const {
       target: { value },
     } = event;
@@ -107,10 +120,19 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
+      {showSnackError && (
+        <div className="snackbar snackbar-warn row">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Zu viele Ergebnisse.</p>
+            <p className="snackbar-text">Bitte Suche einschränken!</p>
+          </div>
+        </div>
+      )}
       {showSpinner && (
-        <div className="loading-spinner row vertical-center">
+        <div className="snackbar snackbar-info row vertical-center">
           <CircularProgress size="1rem" sx={{ color: "white" }} />
-          <p className="loading-spinner-text">Daten laden...</p>
+          <p className="snackbar-text">Daten laden...</p>
         </div>
       )}
       <div className="headline-box col center">
@@ -139,7 +161,10 @@ function SearchPage({ title }) {
             id="district"
             value={district}
             label="Bezirk"
-            onChange={(e) => setDistrict(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setDistrict(e.target.value);
+            }}
           >
             {districts.map((district) => (
               <MenuItem key={district} value={district}>
@@ -201,13 +226,6 @@ function SearchPage({ title }) {
                 <ListItemText primary={groupSize} />
               </MenuItem>
             ))}
-            {/* {groupSizeOptions.map((groupSize) => {
-              Object.keys(groupSize).map((key) => {
-                <MenuItem key={key} value={groupSize[key]}>
-                  {groupSize}
-                </MenuItem>;
-              });
-            })} */}
           </Select>
         </FormControl>
 
@@ -242,7 +260,10 @@ function SearchPage({ title }) {
             id="publicOrPrivate"
             value={publicOrPrivate}
             label="Öffentlich / Privat"
-            onChange={(e) => setPublicOrPrivate(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setPublicOrPrivate(e.target.value);
+            }}
           >
             {publicOrPrivateOptions.map((publicOrPrivate) => (
               <MenuItem key={publicOrPrivate} value={publicOrPrivate}>
@@ -256,6 +277,7 @@ function SearchPage({ title }) {
         <StyledMainButton
           startIcon={<Search />}
           variant="contained"
+          disabled={showSpinner}
           className="btn__start"
           sx={{
             marginBottom: "100px",

@@ -98,7 +98,7 @@ function InquiryPage({ title }) {
       childAge !== "" &&
       isNumber(childAge)
     ) {
-      // navigate("/success");
+      navigate("/success");
     }
   };
 

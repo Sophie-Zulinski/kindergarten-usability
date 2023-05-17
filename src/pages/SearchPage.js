@@ -11,34 +11,15 @@ import {
   MobileStepper,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { StyledMainButton } from "../components/StyledMainButton";
 import { districts } from "../data/districts";
 
-// const groupSizeOptions = [
-//   {
-//     "": "",
-//   },
-//   {
-//     S: "weniger als 5 Kinder",
-//   },
-//   {
-//     M: "bis zu 10 Kinder",
-//   },
-//   {
-//     L: "bis zu 15 Kinder",
-//   },
-//   {
-//     XL: "mehr als 15 Kinder",
-//   },
-// ];
-
 const groupSizeOptions = [
-  "weniger als 5 Kinder",
-  "bis zu 10 Kinder",
-  "bis zu 15 Kinder",
-  "mehr als 15 Kinder",
+  "S - weniger als 5 Kinder",
+  "M - bis zu 10 Kinder",
+  "L - bis zu 15 Kinder",
+  "XL - mehr als 15 Kinder",
 ];
 
 const publicOrPrivateOptions = ["", "Öffentlich", "Privat"];
@@ -50,7 +31,7 @@ const openingHoursOptions = [
   "GT - Ganztags",
 ];
 
-const ageGroupsOptions = ["0 - 2 Jahre", "3 - 4 Jahre", "5 Jahre"];
+const ageGroupsOptions = ["0-2 Jahre", "3-4 Jahre", "5 Jahre"];
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -83,11 +64,14 @@ function SearchPage({ title }) {
     district !== "" &&
       navigate("/results", {
         state: {
-          district,
-          allOpeningHours,
-          allGroupSizes,
-          allAgeGroups,
-          publicOrPrivate,
+          kiga: {},
+          searchParams: {
+            district,
+            allOpeningHours,
+            allGroupSizes,
+            allAgeGroups,
+            publicOrPrivate,
+          },
         },
       });
   };
@@ -264,7 +248,7 @@ function SearchPage({ title }) {
           }}
           onClick={startSearch}
         >
-          <Link to="/search">Suche starten</Link>
+          Suche starten
         </StyledMainButton>
       </div>
     </div>

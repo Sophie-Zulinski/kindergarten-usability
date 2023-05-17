@@ -8,25 +8,32 @@ import {
   Public,
 } from "@mui/icons-material";
 import { Paper, Button } from "@mui/material";
-import { kindergartens } from "../data/kindergartens";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { joinAbbreviations } from "../utils/utils";
 
-function KindergartenShow({ kiga, index, searchParams }) {
+function KindergartenShow({ kiga, index, state }) {
   const navigate = useNavigate();
+
+  const { searchParams } = state;
 
   const {
     district,
-    groupSize,
-    publicOrPrivate,
+    allGroupSizes,
     allOpeningHours,
     allAgeGroups,
+    publicOrPrivate,
   } = searchParams;
+
+  const groupSizes = joinAbbreviations(allGroupSizes);
+  const openingHours = joinAbbreviations(allOpeningHours);
+  const ageGroups = joinAbbreviations(allAgeGroups);
 
   const showDetails = (e) => {
     e.preventDefault();
     navigate("/details", {
       state: {
-        kigaIndex: index,
+        kiga,
+        searchParams,
       },
     });
   };
@@ -40,10 +47,10 @@ function KindergartenShow({ kiga, index, searchParams }) {
           className="result-pic"
         />
         <div className="col">
-          <h3 className="result-headline">{kindergartens[index].name}</h3>
+          <h3 className="result-headline">{kiga.name}</h3>
           <div className="row vert-center">
             <Map className="result-icon" />
-            <p>{kindergartens[index].street}</p>
+            <p>{kiga.street}</p>
           </div>
           <div className="row vert-center">
             <LocationOn className="result-icon" />
@@ -51,19 +58,33 @@ function KindergartenShow({ kiga, index, searchParams }) {
           </div>
           <div className="row vert-center">
             <AccessTime className="result-icon" />
-            {kindergartens[index].openingHours.join(", ")}
+            <p>
+              {allOpeningHours.length === 0
+                ? kiga.openingHours.join(", ")
+                : openingHours}
+            </p>
           </div>
           <div className="row vert-center">
             <BubbleChart className="result-icon" />
-            {kindergartens[index].groupSize.join(", ")}
+            <p>
+              {allGroupSizes.length === 0
+                ? kiga.groupSizes.join(", ")
+                : groupSizes}
+            </p>
           </div>
           <div className="row vert-center">
             <ChildCare className="result-icon" />
-            <p>{kindergartens[index].ageGroups.join(", ")}</p>
+            <p>
+              {allAgeGroups.length === 0
+                ? kiga.ageGroups.join(", ")
+                : ageGroups}
+            </p>
           </div>
           <div className="row vert-center">
             <Public className="result-icon" />
-            <p>{kindergartens[index].publicOrPrivate}</p>
+            <p>
+              {publicOrPrivate === "" ? kiga.publicOrPrivate : publicOrPrivate}
+            </p>
           </div>
         </div>
       </div>
@@ -74,7 +95,7 @@ function KindergartenShow({ kiga, index, searchParams }) {
         sx={{ position: "absolute", bottom: "15px", right: "15px" }}
         onClick={showDetails}
       >
-        <Link to="/details">Details</Link>
+        Details
       </Button>
     </Paper>
   );

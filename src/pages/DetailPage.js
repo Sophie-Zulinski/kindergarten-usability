@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
 import { Paper, MobileStepper, LinearProgress, Chip } from "@mui/material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { kindergartens } from "../data/kindergartens";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowBack,
   Send,
@@ -15,11 +14,26 @@ import {
   Public,
 } from "@mui/icons-material";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import { joinAbbreviations } from "../utils/utils";
 
 function DetailPage({ title }) {
   const { pathname, state } = useLocation();
   const navigate = useNavigate();
   const availabilityRate = Math.floor(Math.random() * 100);
+
+  const { kiga, searchParams } = state;
+
+  const {
+    district,
+    allGroupSizes,
+    allOpeningHours,
+    allAgeGroups,
+    publicOrPrivate,
+  } = searchParams;
+
+  const groupSizes = joinAbbreviations(allGroupSizes);
+  const openingHours = joinAbbreviations(allOpeningHours);
+  const ageGroups = joinAbbreviations(allAgeGroups);
 
   useEffect(() => {
     document.title = title;
@@ -31,13 +45,22 @@ function DetailPage({ title }) {
     }, 0);
   }, [pathname]);
 
-  const { kigaIndex } = state;
-
-  const handleClick = (e) => {
+  const handleInquiryClick = (e) => {
     e.preventDefault();
     navigate("/inquiry", {
       state: {
-        kigaIndex,
+        kiga,
+        searchParams,
+      },
+    });
+  };
+
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    navigate("/results", {
+      state: {
+        kiga,
+        searchParams,
       },
     });
   };
@@ -62,36 +85,50 @@ function DetailPage({ title }) {
           <div className="box col">
             <img
               alt="Kindergarten"
-              src={`/images/kiga_${kindergartens[kigaIndex].id}.png`}
+              src={`/images/kiga_${kiga.id}.png`}
               className="result-pic"
             />
             <div className="col">
-              <h3 className="result-headline">
-                {kindergartens[kigaIndex].name}
-              </h3>
+              <h3 className="result-headline">{kiga.name}</h3>
               <div className="row vert-center">
                 <Map className="result-icon" />
-                <p>{kindergartens[kigaIndex].street}</p>
+                <p>{kiga.street}</p>
               </div>
               <div className="row vert-center">
                 <LocationOn className="result-icon" />
-                <p>{kindergartens[kigaIndex].district}</p>
+                <p>{district}</p>
               </div>
               <div className="row vert-center">
                 <AccessTime className="result-icon" />
-                {kindergartens[kigaIndex].openingHours.join(", ")}
+                <p>
+                  {allOpeningHours.length === 0
+                    ? kiga.openingHours.join(", ")
+                    : openingHours}
+                </p>
               </div>
               <div className="row vert-center">
                 <BubbleChart className="result-icon" />
-                {kindergartens[kigaIndex].groupSize.join(", ")}
+                <p>
+                  {allGroupSizes.length === 0
+                    ? kiga.groupSizes.join(", ")
+                    : groupSizes}
+                </p>
               </div>
               <div className="row vert-center">
                 <ChildCare className="result-icon" />
-                <p>{kindergartens[kigaIndex].ageGroups.join(", ")}</p>
+                <p>
+                  {allAgeGroups.length === 0
+                    ? kiga.ageGroups.join(", ")
+                    : ageGroups}
+                </p>
               </div>
               <div className="row vert-center">
                 <Public className="result-icon" />
-                <p>{kindergartens[kigaIndex].publicOrPrivate}</p>
+                <p>
+                  {publicOrPrivate === ""
+                    ? kiga.publicOrPrivate
+                    : publicOrPrivate}
+                </p>
               </div>
             </div>
             <p className="availability">{availabilityRate}% Auslastung</p>
@@ -144,8 +181,7 @@ function DetailPage({ title }) {
               {" "}
               Hallo!
               <br />
-              Wir sind der Kindergarten{" "}
-              <b>{kindergartens[kigaIndex].name} 😄</b>
+              Wir sind der Kindergarten <b>{kiga.name} 😄</b>
               <br />
               <b>
                 Wir freuen uns sehr, dass du dich für unseren Kindergarten
@@ -155,9 +191,7 @@ function DetailPage({ title }) {
               <br />
               <br />
               Wir befinden uns{" "}
-              <b>
-                mitten im Zentrum des wunderschönen 3. Gemeindebezirks in Wien
-              </b>
+              <b>mitten im Zentrum des wunderschönen {district}s in Wien</b>
               🏡 und{" "}
               <b>
                 bieten neben kleinen (S) auch mittelgroßen (M) Gruppengrößen
@@ -198,9 +232,9 @@ function DetailPage({ title }) {
           sx={{
             marginBottom: "25px",
           }}
-          onClick={handleClick}
+          onClick={handleInquiryClick}
         >
-          <Link to="/inquiry">Anfrage schicken</Link>
+          Anfrage schicken
         </StyledMainButton>
 
         <h3 className="bottomline">Andere Kindergärten ansehen?</h3>
@@ -213,8 +247,9 @@ function DetailPage({ title }) {
             marginTop: "24px",
             marginBottom: "100px",
           }}
+          onClick={handleBackClick}
         >
-          <Link to="/results">Zurück zu den Resultaten</Link>
+          Zurück zu den Resultaten
         </StyledBackButton>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { kindergartens } from "../data/kindergartens";
 import KindergartenShow from "../components/KindergartenShow";
 
 function ResultsPage({ title }) {
-  const { pathname } = useLocation;
+  const { pathname, state } = useLocation();
   useEffect(() => {
     document.title = title;
   }, [title]);
@@ -18,23 +18,6 @@ function ResultsPage({ title }) {
       window.scrollTo(0, 0);
     }, 0);
   }, [pathname]);
-
-  const { state } = useLocation();
-  const {
-    district,
-    groupSize,
-    publicOrPrivate,
-    allOpeningHours,
-    allAgeGroups,
-  } = state;
-
-  const searchParams = {
-    district,
-    groupSize,
-    publicOrPrivate,
-    allOpeningHours,
-    allAgeGroups,
-  };
 
   // filter logic
   // const filteredKigas = kindergartens.filter((kiga) => kiga.district === 3);
@@ -55,12 +38,7 @@ function ResultsPage({ title }) {
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
       {kindergartens.map((kiga, index) => (
-        <KindergartenShow
-          key={index}
-          kiga={kiga}
-          index={index}
-          searchParams={searchParams}
-        />
+        <KindergartenShow key={index} kiga={kiga} state={state} />
       ))}
       <div className="col center">
         <h3 className="bottomline">Nichts passendes dabei?</h3>

@@ -14,3 +14,6 @@ export const isPhoneNumber = (n) => {
     /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,8}$/im;
   return !!n.replaceAll(" ", "").match(regexPhoneNumber);
 };
+
+export const joinAbbreviations = (v) =>
+  v.map((g) => g.split(" ")[0]).join(", ");

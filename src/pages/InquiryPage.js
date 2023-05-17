@@ -31,14 +31,10 @@ function InquiryPage({ title }) {
     }, 0);
   }, [pathname]);
 
-  const { kigaIndex } = state;
-
-  const goBack = (e) => {
+  const handleBackClick = (e) => {
     e.preventDefault();
     navigate("/details", {
-      state: {
-        kigaIndex,
-      },
+      state,
     });
   };
 
@@ -334,7 +330,7 @@ function InquiryPage({ title }) {
               marginTop: "24px",
               marginBottom: "100px",
             }}
-            onClick={goBack}
+            onClick={handleBackClick}
           >
             Zurück zu den Details
           </StyledBackButton>

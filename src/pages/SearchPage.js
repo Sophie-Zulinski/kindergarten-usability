@@ -9,6 +9,7 @@ import {
   Checkbox,
   ListItemText,
   MobileStepper,
+  CircularProgress,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -46,6 +47,7 @@ const MenuProps = {
 
 function SearchPage({ title }) {
   const navigate = useNavigate();
+  const [showSpinner, setShowSpinner] = useState(false);
 
   const [district, setDistrict] = useState("");
   const [districtError, setDistrictError] = useState(false);
@@ -61,19 +63,25 @@ function SearchPage({ title }) {
   const startSearch = (e) => {
     e.preventDefault();
     setDistrictError(district === "" ? true : false);
-    district !== "" &&
-      navigate("/results", {
-        state: {
-          kiga: {},
-          searchParams: {
-            district,
-            allOpeningHours,
-            allGroupSizes,
-            allAgeGroups,
-            publicOrPrivate,
+    if (district !== "") {
+      setShowSpinner(true);
+
+      setTimeout(() => {
+        setShowSpinner(false);
+        navigate("/results", {
+          state: {
+            kiga: {},
+            searchParams: {
+              district,
+              allOpeningHours,
+              allGroupSizes,
+              allAgeGroups,
+              publicOrPrivate,
+            },
           },
-        },
-      });
+        });
+      }, 3000);
+    }
   };
 
   const handleOpeningHoursChange = (event) => {
@@ -99,6 +107,12 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
+      {showSpinner && (
+        <div className="loading-spinner row vertical-center">
+          <CircularProgress size="1rem" sx={{ color: "white" }} />
+          <p className="loading-spinner-text">Daten laden...</p>
+        </div>
+      )}
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"

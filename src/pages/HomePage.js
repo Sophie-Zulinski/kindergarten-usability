@@ -1,15 +1,36 @@
-import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { ArrowForward, AccountCircle } from "@mui/icons-material";
-import { useEffect } from "react";
+import { ArrowForward } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 function LandingPage() {
+  const [showSpinner, setShowSpinner] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "Kindergartensuche";
   }, []);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    setShowSpinner(true);
+
+    setTimeout(() => {
+      setShowSpinner(false);
+      navigate("/information");
+    }, 3000);
+  };
+
   return (
     <div className="landing-page">
+      {showSpinner && (
+        <div className="loading-spinner row vertical-center">
+          <CircularProgress size="1rem" sx={{ color: "white" }} />
+          <p className="loading-spinner-text">Applikation lädt...</p>
+        </div>
+      )}
       <img
         src="/images/kindergarten_text.png"
         alt="Kindergarten"
@@ -22,22 +43,9 @@ function LandingPage() {
         sx={{
           width: 250,
         }}
+        onClick={handleClick}
       >
-        <Link to="/information">Zur Kindergartensuche</Link>
-      </Button>
-      <br />
-      <Button
-        variant="outlined"
-        startIcon={<AccountCircle />}
-        className="landing-page-outlined-btn"
-        sx={{
-          color: "#000000",
-          backgroundColor: "rgba(255, 255, 255, 0.7)",
-          borderColor: "#FFFFFF",
-          width: 250,
-        }}
-      >
-        <Link to="/login">Login</Link>
+        Zur Kindergartensuche
       </Button>
     </div>
   );

@@ -6,7 +6,7 @@ import { StyledBackButton } from "../components/StyledBackButton";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { kindergartens } from "../data/kindergartens";
 import KindergartenShow from "../components/KindergartenShow";
-import { Search } from "@mui/icons-material";
+import { FilterAlt } from "@mui/icons-material";
 
 function ResultsPage({ title }) {
   const [searchField, setSearchField] = useState("");
@@ -45,12 +45,12 @@ function ResultsPage({ title }) {
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
       <div className="row search-field">
-        <Search sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+        <FilterAlt sx={{ color: "secondary", mr: 1, my: 0.5 }} />
         <TextField
           fullWidth
           color="secondary"
           id="search"
-          label="Suche"
+          label="Filtern"
           variant="standard"
           onChange={handleChange}
         />

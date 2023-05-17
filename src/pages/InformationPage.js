@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { RocketLaunch } from "@mui/icons-material";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-import { Link } from "react-router-dom";
 import { StyledMainButton } from "../components/StyledMainButton";
+import { Link } from "react-router-dom";
 
 function InformationPage({ title }) {
   useEffect(() => {

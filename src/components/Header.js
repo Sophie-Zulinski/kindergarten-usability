@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HelpOutline, Close } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Header({ title }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,10 @@ function Header({ title }) {
         >
           <HelpOutline />
         </IconButton>
-        <h3>{title}</h3>
+        <h3>
+          <Link to="/home"></Link>
+          {title}
+        </h3>
         <div className="header-spacer">&nbsp;</div>
       </div>
       {isModalOpen && (

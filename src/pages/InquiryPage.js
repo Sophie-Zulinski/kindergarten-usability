@@ -100,7 +100,6 @@ function InquiryPage({ title }) {
       isNumber(childAge)
     ) {
       setInitialError(initialError + 1);
-      console.log(initialError);
 
       if (initialError === 1) {
         navigate("/success");

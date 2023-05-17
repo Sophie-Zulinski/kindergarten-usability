@@ -197,6 +197,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.3);
 }
 
+.menu-item {
+  margin-bottom: 24px;
+}
+
 .btn__up {
   position: fixed;
   bottom: 30px;

@@ -4,7 +4,6 @@ import {
   MobileStepper,
   FormHelperText,
   FormControl,
-  Button,
 } from "@mui/material";
 import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
@@ -12,14 +11,10 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
-import theme from "../styles/theme";
 
 function InquiryPage({ title }) {
   const navigate = useNavigate();
   const { pathname, state } = useLocation();
-  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
     document.title = title;
@@ -36,10 +31,6 @@ function InquiryPage({ title }) {
     navigate("/details", {
       state,
     });
-  };
-
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
   };
 
   const [firstName, setFirstName] = useState("");
@@ -75,7 +66,7 @@ function InquiryPage({ title }) {
   const sendInquiry = (e) => {
     e.preventDefault();
     setFirstNameError(firstName === "" ? true : false);
-    setLastNameError(firstName === "" ? true : false);
+    setLastNameError(lastName === "" ? true : false);
     setPhoneNumberError(
       phoneNumber === "" || !isPhoneNumber(phoneNumber) ? true : false
     );
@@ -108,38 +99,11 @@ function InquiryPage({ title }) {
       isNumber(childAge)
     ) {
       // navigate("/success");
-      setOpenSnackbar(true);
     }
   };
 
-  const action = (
-    <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
-      Close
-    </Button>
-  );
-
   return (
     <div className="container col">
-      {/* <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={openSnackbar}
-        autoHideDuration={6000}
-        // onClose={handleCloseSnackbar}
-        // message="I love snacks"
-        // action={action}
-      >
-        <MuiAlert
-          onClose={handleCloseSnackbar}
-          severity="info"
-          sx={{
-            width: "100%",
-            backgroundColor: "#FF0000",
-            color: "#FFF",
-          }}
-        >
-          Snackbar Message
-        </MuiAlert>
-      </Snackbar> */}
       <ScrollToTopButton />
       <div className="headline-box col center">
         <MobileStepper

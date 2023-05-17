@@ -333,7 +333,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .snackbar {
-  position: absolute;
+  position: fixed;
   background-color: rgba(174, 174, 174, 0.8);
   border-color: white;
   padding: 10px 16px;
@@ -351,6 +351,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   line-height: 1.43;
   letter-spacing: 0.01071em;
   color: #fff;
+  top: 5%;
 
   &-info {
     background-color: #212121;
@@ -363,13 +364,5 @@ Note: Beware of modifying this element as it can break the animations - you shou
   &-text {
     margin-left: 12px;
     align-self: start;
-  }
-
-  &-bottom-home {
-    bottom: 12%;
-  }
-
-  &-bottom-search {
-    bottom: 3%;
   }
 }

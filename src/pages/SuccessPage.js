@@ -34,7 +34,6 @@ function SuccessPage({ title }) {
         <StyledMainButton
           startIcon={<ArrowBack />}
           variant="contained"
-          className="btn__start"
           sx={{
             marginBottom: "100px",
           }}

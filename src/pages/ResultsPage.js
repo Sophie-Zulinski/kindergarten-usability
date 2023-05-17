@@ -63,7 +63,6 @@ function ResultsPage({ title }) {
         <StyledBackButton
           startIcon={<ArrowBack />}
           variant="contained"
-          className="btn__start"
           sx={{
             width: 250,
             marginTop: "24px",

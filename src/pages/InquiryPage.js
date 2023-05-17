@@ -15,6 +15,7 @@ import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
 function InquiryPage({ title }) {
   const navigate = useNavigate();
   const { pathname, state } = useLocation();
+  const [initialError, setInitialError] = useState(true);
 
   useEffect(() => {
     document.title = title;
@@ -98,7 +99,13 @@ function InquiryPage({ title }) {
       childAge !== "" &&
       isNumber(childAge)
     ) {
-      navigate("/success");
+      if (initialError) {
+        setInitialError(false);
+      }
+
+      if (initialError === false) {
+        navigate("/success");
+      }
     }
   };
 

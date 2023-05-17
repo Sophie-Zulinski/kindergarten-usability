@@ -120,15 +120,6 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
-      {showSnackError && (
-        <div className="snackbar snackbar-warn row snackbar-bottom-search">
-          <ErrorOutline />
-          <div className="col">
-            <p className="snackbar-text">Zu viele Ergebnisse.</p>
-            <p className="snackbar-text">Bitte Suche einschränken!</p>
-          </div>
-        </div>
-      )}
       {showSpinner && (
         <div className="snackbar snackbar-info row snackbar-bottom-search">
           <CircularProgress size="1rem" sx={{ color: "white" }} />
@@ -273,6 +264,15 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
       </div>
+      {showSnackError && (
+        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Zu viele Ergebnisse.</p>
+            <p className="snackbar-text">Bitte Suche einschränken!</p>
+          </div>
+        </div>
+      )}
       <div className="col center">
         <StyledMainButton
           startIcon={<Search />}

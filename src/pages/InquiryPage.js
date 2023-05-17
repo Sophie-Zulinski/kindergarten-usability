@@ -9,13 +9,13 @@ import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { ArrowBack, ArrowForward, ErrorOutline } from "@mui/icons-material";
 import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
 
 function InquiryPage({ title }) {
   const navigate = useNavigate();
   const { pathname, state } = useLocation();
-  const [initialError, setInitialError] = useState(true);
+  const [initialError, setInitialError] = useState(0);
 
   useEffect(() => {
     document.title = title;
@@ -99,11 +99,9 @@ function InquiryPage({ title }) {
       childAge !== "" &&
       isNumber(childAge)
     ) {
-      if (initialError) {
-        setInitialError(false);
-      }
+      setInitialError(initialError + 1);
 
-      if (initialError === false) {
+      if (initialError > 1) {
         navigate("/success");
       }
     }
@@ -112,6 +110,17 @@ function InquiryPage({ title }) {
   return (
     <div className="container col">
       <ScrollToTopButton />
+      {initialError === 1 && (
+        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Technischer Fehler.</p>
+            <p className="snackbar-text">
+              Bitte versuchen Sie Ihre Anfrage nochmals abzuschicken!
+            </p>
+          </div>
+        </div>
+      )}
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"

@@ -3,6 +3,7 @@ import { ArrowForward } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
+import { StyledMainButton } from "../components/StyledMainButton";
 
 function LandingPage() {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -37,7 +38,7 @@ function LandingPage() {
         style={{ width: "300px" }}
       ></img>
       <br />
-      <Button
+      <StyledMainButton
         variant="contained"
         disabled={showSpinner}
         startIcon={<ArrowForward />}
@@ -47,7 +48,7 @@ function LandingPage() {
         onClick={handleClick}
       >
         Zur Kindergartensuche
-      </Button>
+      </StyledMainButton>
     </div>
   );
 }

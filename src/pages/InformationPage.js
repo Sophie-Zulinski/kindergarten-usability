@@ -122,7 +122,7 @@ function InformationPage({ title }) {
             startIcon={<RocketLaunch />}
             variant="contained"
             sx={{
-              marginBottom: "100px",
+              marginBottom: "150px",
             }}
           >
             <Link to="/search">Los geht's!</Link>

@@ -203,7 +203,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .btn__up {
   position: fixed;
-  bottom: 30px;
+  bottom: 80px;
   right: 30px;
   background-color: #fff;
   border: 3px solid #343434;
@@ -367,4 +367,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
   &-text {
     margin-left: 12px;
   }
+}
+
+.logo {
+  width: 300px;
+}
+
+.footer {
+  position: fixed;
+  height: 56px;
+  bottom: 0;
+  width: 100vw;
+  background-color: #ffd700;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -1,7 +1,6 @@
 import theme from "./styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Routes, Route, useLocation } from "react-router-dom";
-import ReactBurgerMenu from "./components/ReactBurgerMenu";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import InformationPage from "./pages/InformationPage";
@@ -12,6 +11,7 @@ import DetailPage from "./pages/DetailPage";
 import { useEffect, useState } from "react";
 import InquiryPage from "./pages/InquiryPage";
 import SuccessPage from "./pages/SuccessPage";
+import Footer from "./components/Footer";
 
 const titles = {
   "/": {
@@ -76,19 +76,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div id="outer-container">
-        {!showLandingPage ? (
-          <>
-            <ReactBurgerMenu
-              outerContainerId={"outer-container"}
-              pageWrapId={"page-wrap"}
-              isOpen={isOpen}
-              toggleMenuChange={toggleMenuChange}
-            />
-            <Header title={pageTitle} />
-          </>
-        ) : (
-          ""
-        )}
+        {!showLandingPage ? <Header title={pageTitle} /> : ""}
         <div id="page-wrap">
           <Routes>
             <Route path="/" element={<HomePage title={documentTitle} />} />
@@ -120,6 +108,7 @@ function App() {
             <Route path="*" element={<ErrorPage title="404 Not found" />} />
           </Routes>
         </div>
+        {!showLandingPage ? <Footer /> : ""}
       </div>
     </ThemeProvider>
   );

@@ -1,5 +1,3 @@
-import { HelpOutline } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function Header({ title }) {
@@ -9,8 +7,7 @@ function Header({ title }) {
       <div className="header-menu">
         <div className="header-spacer">&nbsp;</div>
         <h3>
-          <Link to="/home"></Link>
-          {title}
+          <Link to="/search">{title}</Link>
         </h3>
         <div className="header-spacer">&nbsp;</div>
       </div>

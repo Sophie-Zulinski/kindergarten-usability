@@ -29,10 +29,6 @@ h5 {
   position: relative;
 }
 
-.header {
-  width: 100vw;
-}
-
 .header-menu {
   background-color: #ffd700;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -47,13 +43,6 @@ h5 {
 .header-spacer {
   width: 24px;
   margin-right: 14px;
-}
-
-.header-img {
-  height: 120px;
-  background-image: url("../public/images/kindergarten_header.png");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .landing-page {
@@ -384,4 +373,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.not-found {
+  margin-top: 30px;
 }

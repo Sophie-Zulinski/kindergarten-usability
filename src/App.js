@@ -50,22 +50,17 @@ const titles = {
 
 function App() {
   const [showLandingPage, setShowLandingPage] = useState(true);
-  const [pageTitle, setPageTitle] = useState("404 Not found");
-  const [documentTitle, setDocumentTitle] = useState("404 Not found");
+  const [pageTitle, setPageTitle] = useState("");
+  const [documentTitle, setDocumentTitle] = useState("");
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenuChange = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     if (Object.keys(titles).indexOf(location.pathname) !== -1) {
       setPageTitle(titles[location.pathname].header);
       setDocumentTitle(titles[location.pathname].document);
     } else {
-      setPageTitle("404 Not found");
-      setDocumentTitle("404 Not found");
+      setPageTitle("404 Seite existiert nicht");
+      setDocumentTitle("404 Seite existiert nicht");
     }
 
     location.pathname === "/" || location.pathname === "/home"
@@ -105,7 +100,7 @@ function App() {
               path="/success"
               element={<SuccessPage title={documentTitle} />}
             />
-            <Route path="*" element={<ErrorPage title="404 Not found" />} />
+            <Route path="*" element={<ErrorPage title={documentTitle} />} />
           </Routes>
         </div>
         {!showLandingPage ? <Footer /> : ""}

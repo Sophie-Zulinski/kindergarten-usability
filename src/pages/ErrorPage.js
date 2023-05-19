@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import { SentimentVeryDissatisfied } from "@mui/icons-material";
 
-function ErrorPage() {
+function ErrorPage({ title }) {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   return (
     <div className="not-found col vert-center">
       <SentimentVeryDissatisfied sx={{ fontSize: "80px" }} />
-      <p>Page not found</p>
+      <p>Uuups, die Seite existiert nicht</p>
     </div>
   );
 }

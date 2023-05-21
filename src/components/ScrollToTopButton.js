@@ -6,7 +6,7 @@ function ScrollToTopButton() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 176) {
+      if (window.scrollY > 50) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

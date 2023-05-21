@@ -10,8 +10,8 @@ function SuccessPage({ title }) {
   }, [title]);
 
   return (
-    <div className="container col center">
-      <div className="headline-box col center">
+    <div className="container col">
+      <div className="headline-box col">
         <MobileStepper
           variant="dots"
           steps={5}
@@ -30,7 +30,7 @@ function SuccessPage({ title }) {
         Verbindung setzen!
       </div>
       <div className="success-icon">🎉</div>
-      <div className="col center">
+      <div className="col">
         <StyledMainButton
           startIcon={<ArrowBack />}
           variant="contained"
@@ -38,7 +38,7 @@ function SuccessPage({ title }) {
             marginBottom: "100px",
           }}
         >
-          <Link to="/home">Zurück zum Start</Link>
+          <Link to="/search">Zurück zur Suche</Link>
         </StyledMainButton>
       </div>
     </div>

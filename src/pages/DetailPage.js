@@ -68,7 +68,7 @@ function DetailPage({ title }) {
   return (
     <div className="container col">
       <ScrollToTopButton />
-      <div className="headline-box col center">
+      <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
           steps={5}
@@ -90,15 +90,15 @@ function DetailPage({ title }) {
             />
             <div className="col">
               <h3 className="result-headline">{kiga.name}</h3>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <Map className="result-icon" />
                 <p>{kiga.street}</p>
               </div>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <LocationOn className="result-icon" />
                 <p>{district}</p>
               </div>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <AccessTime className="result-icon" />
                 <p>
                   {allOpeningHours.length === 0
@@ -106,7 +106,7 @@ function DetailPage({ title }) {
                     : openingHours}
                 </p>
               </div>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <BubbleChart className="result-icon" />
                 <p>
                   {allGroupSizes.length === 0
@@ -114,7 +114,7 @@ function DetailPage({ title }) {
                     : groupSizes}
                 </p>
               </div>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <ChildCare className="result-icon" />
                 <p>
                   {allAgeGroups.length === 0
@@ -122,7 +122,7 @@ function DetailPage({ title }) {
                     : ageGroups}
                 </p>
               </div>
-              <div className="row vert-center">
+              <div className="row center-vertical">
                 <Public className="result-icon" />
                 <p>
                   {publicOrPrivate === ""
@@ -225,7 +225,7 @@ function DetailPage({ title }) {
           </div>
         </Paper>
       </div>
-      <div className="col center">
+      <div className="col center-all">
         <StyledMainButton
           startIcon={<Send />}
           variant="contained"
@@ -244,7 +244,7 @@ function DetailPage({ title }) {
           sx={{
             width: 250,
             marginTop: "24px",
-            marginBottom: "100px",
+            marginBottom: "150px",
           }}
           onClick={handleBackClick}
         >

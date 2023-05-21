@@ -31,27 +31,30 @@ h5 {
 
 .header-menu {
   background-color: #ffd700;
+  z-index: 2;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   height: 56px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100vw;
+  position: fixed;
+  top: 0;
 }
 
-.header-spacer {
-  width: 24px;
-  margin-right: 14px;
+.header-title {
+  height: 40px;
+  background-color: white;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  width: 100vw;
+  position: fixed;
+  top: 56px;
+  z-index: 1;
 }
 
 .landing-page {
   position: relative;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
   background-image: url("../public/images/kindergarten.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -67,13 +70,17 @@ h5 {
   flex-direction: row;
 }
 
-.center {
+.center-all {
   align-items: center;
   justify-content: center;
 }
 
-.vert-center {
+.center-vertical {
   align-items: center;
+}
+
+.center-horizontal {
+  justify-content: center;
 }
 
 .container {
@@ -82,7 +89,7 @@ h5 {
   position: relative;
 
   .headline-box {
-    margin-top: 20px;
+    margin-top: 116px;
 
     .headline {
       font-weight: 500;
@@ -118,74 +125,6 @@ h5 {
   }
 }
 
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: absolute;
-  width: 18px;
-  height: 15px;
-  right: 25px;
-  top: 140.5px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #000000;
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #222222;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #000;
-}
-
-/*
-Sidebar wrapper styles
-Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
-*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-/* General sidebar styles */
-.bm-menu {
-  background: #fff;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #000;
-  padding: 0.8em;
-}
-
-/* Individual item */
-.bm-item {
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
 .menu-item {
   margin-bottom: 24px;
 }
@@ -213,22 +152,28 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: relative;
 }
 
-.box {
+.result-box {
   padding: 16px;
 }
 
 .result-pic {
   width: 150px;
+  height: 150px;
 }
 
 .result-headline {
   text-transform: uppercase;
   font-weight: 500;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .result-icon {
   margin-right: 7px;
+}
+
+.result-infos {
+  margin-left: 16px;
+  align-self: flex-end;
 }
 
 .bottomline {
@@ -360,6 +305,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .logo {
   width: 300px;
+}
+
+.logo-header {
+  width: 80px;
+  margin-right: 14px;
 }
 
 .footer {

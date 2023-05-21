@@ -121,7 +121,7 @@ function InquiryPage({ title }) {
           </div>
         </div>
       )}
-      <div className="headline-box col center">
+      <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
           steps={5}
@@ -214,7 +214,7 @@ function InquiryPage({ title }) {
           )}
         </FormControl>
       </div>
-      <div className="col center">
+      <div className="col">
         <h3 className="bottomline">Daten zu deinem Kind:</h3>
       </div>
       <div className="input-box">
@@ -288,7 +288,7 @@ function InquiryPage({ title }) {
           multiline
           placeholder="Verfasse hier deine Nachricht..."
         />
-        <div className="col center">
+        <div className="col center-all">
           <StyledMainButton
             startIcon={<ArrowForward />}
             variant="contained"

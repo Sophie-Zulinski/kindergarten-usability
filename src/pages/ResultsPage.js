@@ -11,6 +11,7 @@ import { FilterAlt } from "@mui/icons-material";
 function ResultsPage({ title }) {
   const [searchField, setSearchField] = useState("");
   const { pathname, state } = useLocation();
+
   useEffect(() => {
     document.title = title;
   }, [title]);
@@ -32,7 +33,7 @@ function ResultsPage({ title }) {
   return (
     <div className="container col">
       <ScrollToTopButton />
-      <div className="headline-box col center">
+      <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
           steps={5}
@@ -58,7 +59,7 @@ function ResultsPage({ title }) {
       {filteredKigas.map((kiga, index) => (
         <KindergartenShow key={index} kiga={kiga} state={state} />
       ))}
-      <div className="col center">
+      <div className="col center-all">
         <h3 className="bottomline">Nichts passendes dabei?</h3>
         <StyledBackButton
           startIcon={<ArrowBack />}
@@ -66,7 +67,7 @@ function ResultsPage({ title }) {
           sx={{
             width: 250,
             marginTop: "24px",
-            marginBottom: "100px",
+            marginBottom: "156px",
           }}
         >
           <Link to="/search">Neue Suche starten</Link>

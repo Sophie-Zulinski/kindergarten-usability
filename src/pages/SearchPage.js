@@ -126,7 +126,7 @@ function SearchPage({ title }) {
           <p className="snackbar-text">Daten laden...</p>
         </div>
       )}
-      <div className="headline-box col center">
+      <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
           steps={5}
@@ -273,7 +273,7 @@ function SearchPage({ title }) {
           </div>
         </div>
       )}
-      <div className="col center">
+      <div className="col center-all">
         <StyledMainButton
           startIcon={<Search />}
           variant="contained"

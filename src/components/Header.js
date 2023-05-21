@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { AccountCircleOutlined, HelpOutline, Close } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import {
+  AccountCircleOutlined,
+  HelpOutline,
+  Close,
+  ArrowRight,
+} from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { useNavigate, Link } from "react-router-dom";
 
 function Header({ title }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openHelp = () => {
     setIsModalOpen(true);
@@ -54,26 +60,29 @@ function Header({ title }) {
           </div>
         </div>
       )}
-      <div className="header-menu">
-        <IconButton
-          onClick={openHelp}
-          color="secondary"
-          sx={{ marginLeft: "14px" }}
-        >
-          <HelpOutline />
-        </IconButton>
-        <div className="header-spacer">&nbsp;</div>
-        <h3>
-          <Link to="/search">{title}</Link>
-        </h3>
-        <div className="header-spacer">&nbsp;</div>
-        <IconButton
-          onClick={openHelp}
-          color="secondary"
-          sx={{ marginRight: "14px" }}
-        >
-          <AccountCircleOutlined />
-        </IconButton>
+      <div className="header col">
+        <div className="header-menu row center-vertical">
+          <IconButton
+            onClick={openHelp}
+            color="secondary"
+            sx={{ marginLeft: "14px" }}
+          >
+            <HelpOutline />
+          </IconButton>
+          <img
+            src="/images/kindergarten_text_header.png"
+            alt="Kindergarten"
+            className="logo-header"
+            onClick={() => navigate("/home")}
+          ></img>
+          <IconButton color="secondary" sx={{ marginRight: "14px" }}>
+            <AccountCircleOutlined />
+          </IconButton>
+        </div>
+        <div className="header-title row center-vertical">
+          <ArrowRight />
+          {title}
+        </div>
       </div>
     </>
   );

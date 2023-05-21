@@ -17,9 +17,28 @@ function Footer() {
     navigate("/information");
   };
 
+  const handleClickResultsList = () => {
+    navigate("/results", {
+      state: {
+        kiga: {},
+        searchParams: {
+          district: "",
+          allOpeningHours: [],
+          allGroupSizes: [],
+          allAgeGroups: [],
+          publicOrPrivate: "",
+        },
+      },
+    });
+  };
+
   return (
     <div className="footer">
-      <IconButton color="secondary" sx={{ marginLeft: "14px" }}>
+      <IconButton
+        onClick={handleClickResultsList}
+        color="secondary"
+        sx={{ marginLeft: "14px" }}
+      >
         <FormatListNumberedOutlined />
       </IconButton>
       <IconButton onClick={openSearch} color="secondary">

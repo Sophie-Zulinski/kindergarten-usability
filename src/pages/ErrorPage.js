@@ -6,7 +6,7 @@ function ErrorPage({ title }) {
     document.title = title;
   }, [title]);
   return (
-    <div className="not-found col vert-center">
+    <div className="not-found col center-vertical">
       <SentimentVeryDissatisfied sx={{ fontSize: "80px" }} />
       <p>Uuups, die Seite existiert nicht</p>
     </div>

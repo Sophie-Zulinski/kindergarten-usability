@@ -16,7 +16,7 @@ function LandingPage() {
   }, [navigate]);
 
   return (
-    <div className="landing-page">
+    <div className="landing-page col center-all">
       {showSpinner && (
         <div className="snackbar snackbar-info snackbar-bottom-home row">
           <CircularProgress size="1rem" sx={{ color: "white" }} />

@@ -132,6 +132,9 @@ function InquiryPage({ title }) {
           sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Daten zu deiner Person:</h3>
+        <p className="required-description">
+          Die mit * gekennzeichneten Felder sind verpflichtend
+        </p>
       </div>
       <div className="input-box">
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
@@ -214,7 +217,7 @@ function InquiryPage({ title }) {
           )}
         </FormControl>
       </div>
-      <div className="col">
+      <div className="col center-vertical">
         <h3 className="bottomline">Daten zu deinem Kind:</h3>
       </div>
       <div className="input-box">

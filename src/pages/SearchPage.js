@@ -137,6 +137,9 @@ function SearchPage({ title }) {
           sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Nenne uns zunächst deine Suchkriterien...</h3>
+        <p className="required-description">
+          Die mit * gekennzeichneten Felder sind verpflichtend
+        </p>
       </div>
       <div className="input-box">
         <FormControl

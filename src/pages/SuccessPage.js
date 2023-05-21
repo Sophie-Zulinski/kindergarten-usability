@@ -10,7 +10,7 @@ function SuccessPage({ title }) {
   }, [title]);
 
   return (
-    <div className="container col">
+    <div className="container col center-all">
       <div className="headline-box col">
         <MobileStepper
           variant="dots"

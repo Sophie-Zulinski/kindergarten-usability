@@ -34,23 +34,37 @@ function Footer() {
 
   return (
     <div className="footer">
-      <IconButton
-        onClick={handleClickResultsList}
-        color="secondary"
-        sx={{ marginLeft: "14px" }}
-      >
-        <FormatListNumberedOutlined />
-      </IconButton>
-      <IconButton onClick={openSearch} color="secondary">
-        <Search />
-      </IconButton>
-      <IconButton
-        onClick={openInfo}
-        color="secondary"
-        sx={{ marginRight: "14px" }}
-      >
-        <InfoOutlined />
-      </IconButton>
+      <div className="footer-menu footer-menu-left col center-vertical">
+        <IconButton
+          onClick={handleClickResultsList}
+          sx={{ padding: "0 0 5px 0" }}
+        >
+          <FormatListNumberedOutlined />
+        </IconButton>
+        <p>Übersicht</p>
+      </div>
+
+      <div className="footer-menu col center-vertical">
+        <IconButton
+          onClick={openSearch}
+          color="secondary"
+          sx={{ padding: "0 0 5px 0" }}
+        >
+          <Search />
+        </IconButton>
+        <p>Suche</p>
+      </div>
+
+      <div className="footer-menu footer-menu-right col center-vertical">
+        <IconButton
+          onClick={openInfo}
+          color="secondary"
+          sx={{ padding: "0 0 5px 0" }}
+        >
+          <InfoOutlined />
+        </IconButton>
+        <p>Infos</p>
+      </div>
     </div>
   );
 }

@@ -122,7 +122,7 @@ function InformationPage({ title }) {
             startIcon={<Search />}
             variant="contained"
             sx={{
-              marginBottom: "156px",
+              marginBottom: "88px",
             }}
           >
             <Link to="/search">Zur Suche</Link>

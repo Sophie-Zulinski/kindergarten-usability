@@ -9,7 +9,11 @@ const routes = [
   { path: "/", component: HomePage, title: "Home" },
   { path: "/information", component: InformationPage, title: "Informationen" },
   { path: "/search", component: SearchPage, title: "Suche" },
-  { path: "/results", component: ResultsPage, title: "Liste der Kindergärten" },
+  {
+    path: "/results",
+    component: ResultsPage,
+    title: "Liste der verfügbaren Kindergärten",
+  },
 ];
 
 export default routes;

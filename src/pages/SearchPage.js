@@ -8,7 +8,6 @@ import {
   OutlinedInput,
   Checkbox,
   ListItemText,
-  MobileStepper,
   CircularProgress,
 } from "@mui/material";
 import { Search, ErrorOutline } from "@mui/icons-material";
@@ -127,15 +126,6 @@ function SearchPage({ title }) {
         </div>
       )}
       <div className="headline-box col center-all">
-        <MobileStepper
-          variant="dots"
-          steps={5}
-          activeStep={0}
-          position="static"
-          backButton={null}
-          nextButton={null}
-          sx={{ marginBottom: "10px" }}
-        />
         <h3 className="headline">Deine Suchkriterien</h3>
         <p className="required-description">
           Die mit * gekennzeichneten Felder sind verpflichtend

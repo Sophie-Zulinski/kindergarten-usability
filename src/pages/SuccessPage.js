@@ -11,15 +11,14 @@ function SuccessPage({ title }) {
 
   return (
     <div className="container col center-all">
-      <div className="headline-box col">
+      <div className="headline-box col center-vertical">
         <MobileStepper
           variant="dots"
-          steps={5}
-          activeStep={4}
+          steps={4}
+          activeStep={3}
           position="static"
           backButton={null}
           nextButton={null}
-          sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Vielen Dank!</h3>
       </div>

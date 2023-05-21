@@ -4,6 +4,7 @@ import {
   MobileStepper,
   FormHelperText,
   FormControl,
+  Alert,
 } from "@mui/material";
 import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
@@ -124,12 +125,11 @@ function InquiryPage({ title }) {
       <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
-          steps={5}
-          activeStep={3}
+          steps={4}
+          activeStep={2}
           position="static"
           backButton={null}
           nextButton={null}
-          sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Daten zu deiner Person:</h3>
         <p className="required-description">
@@ -230,7 +230,10 @@ function InquiryPage({ title }) {
         </FormControl>
       </div>
       <div className="col center-vertical">
-        <h3 className="bottomline">Daten zu deinem Kind:</h3>
+        <h3 className="headline">Daten zu deinem Kind:</h3>
+        <p className="required-description">
+          Die mit * gekennzeichneten Felder sind verpflichtend
+        </p>
       </div>
       <div className="input-box">
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
@@ -313,6 +316,17 @@ function InquiryPage({ title }) {
           placeholder="Verfasse hier deine Nachricht..."
         />
         <div className="col center-all">
+          {(firstNameError ||
+            lastNameError ||
+            phoneNumberError ||
+            mailAddressError ||
+            childFirstNameError ||
+            childLastNameError ||
+            childAgeError) && (
+            <Alert className="alert" severity="error">
+              <p>Fehler bei Eingabe!</p>
+            </Alert>
+          )}
           <StyledMainButton
             startIcon={<ArrowForward />}
             variant="contained"
@@ -323,16 +337,14 @@ function InquiryPage({ title }) {
           >
             Anfrage absenden
           </StyledMainButton>
-
           <h3 className="bottomline">Nochmal Details checken?</h3>
           <StyledBackButton
             startIcon={<ArrowBack />}
             variant="contained"
-            className="btn__start"
             sx={{
               width: 250,
               marginTop: "24px",
-              marginBottom: "100px",
+              marginBottom: "88px",
             }}
             onClick={handleBackClick}
           >

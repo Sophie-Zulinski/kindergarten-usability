@@ -71,12 +71,11 @@ function DetailPage({ title }) {
       <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
-          steps={5}
-          activeStep={2}
+          steps={4}
+          activeStep={1}
           position="static"
           backButton={null}
           nextButton={null}
-          sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Hier findest du die Einzelheiten</h3>
       </div>
@@ -244,7 +243,7 @@ function DetailPage({ title }) {
           sx={{
             width: 250,
             marginTop: "24px",
-            marginBottom: "150px",
+            marginBottom: "88px",
           }}
           onClick={handleBackClick}
         >

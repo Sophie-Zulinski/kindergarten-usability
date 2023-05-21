@@ -37,12 +37,11 @@ function ResultsPage({ title }) {
       <div className="headline-box col center-all">
         <MobileStepper
           variant="dots"
-          steps={5}
-          activeStep={1}
+          steps={4}
+          activeStep={0}
           position="static"
           backButton={null}
           nextButton={null}
-          sx={{ marginBottom: "10px" }}
         />
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
@@ -53,7 +52,7 @@ function ResultsPage({ title }) {
           fullWidth
           color="secondary"
           id="search"
-          label="Nach Kindergartenname filtern"
+          label="Nach Name filtern"
           onChange={handleChange}
         />
       </div>

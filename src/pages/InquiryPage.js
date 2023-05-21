@@ -145,7 +145,10 @@ function InquiryPage({ title }) {
             label="Vorname"
             variant="outlined"
             placeholder="Erika"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => {
+              setFirstNameError(false);
+              setFirstName(e.target.value);
+            }}
             error={firstNameError}
           />
           {firstNameError ? (
@@ -165,7 +168,10 @@ function InquiryPage({ title }) {
             label="Nachname"
             variant="outlined"
             placeholder="Musterfrau"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => {
+              setLastNameError(false);
+              setLastName(e.target.value);
+            }}
             error={lastNameError}
           />
           {lastNameError ? (
@@ -185,7 +191,10 @@ function InquiryPage({ title }) {
             label="Telefonnummer"
             variant="outlined"
             placeholder="0664 12345678"
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => {
+              setPhoneNumberError(false);
+              setPhoneNumber(e.target.value);
+            }}
             error={phoneNumberError}
           />
           {phoneNumberError ? (
@@ -205,7 +214,10 @@ function InquiryPage({ title }) {
             label="E-Mail"
             variant="outlined"
             placeholder="erika.mustermann@mail.com"
-            onChange={(e) => setMailAddress(e.target.value)}
+            onChange={(e) => {
+              setMailAddressError(false);
+              setMailAddress(e.target.value);
+            }}
             error={mailAddressError}
           />
           {mailAddressError ? (
@@ -230,7 +242,10 @@ function InquiryPage({ title }) {
             label="Vorname"
             variant="outlined"
             placeholder="Max"
-            onChange={(e) => setChildFirstName(e.target.value)}
+            onChange={(e) => {
+              setChildFirstNameError(false);
+              setChildFirstName(e.target.value);
+            }}
             error={childFirstNameError}
           />
           {childFirstNameError ? (
@@ -250,7 +265,10 @@ function InquiryPage({ title }) {
             label="Nachname"
             variant="outlined"
             placeholder="Mustermann"
-            onChange={(e) => setChildLastName(e.target.value)}
+            onChange={(e) => {
+              setChildLastNameError(false);
+              setChildLastName(e.target.value);
+            }}
             error={childLastNameError}
           />
           {childLastNameError ? (
@@ -270,7 +288,10 @@ function InquiryPage({ title }) {
             label="Alter"
             variant="outlined"
             placeholder="3"
-            onChange={(e) => setChildAge(e.target.value)}
+            onChange={(e) => {
+              setChildAgeError(false);
+              setChildAge(e.target.value);
+            }}
             error={childAgeError}
           />
           {childAgeError ? (

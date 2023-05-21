@@ -17,3 +17,20 @@ export const isPhoneNumber = (n) => {
 
 export const joinAbbreviations = (v) =>
   v.map((g) => g.split(" ")[0]).join(", ");
+
+export function sortObjectsByName(objects) {
+  objects.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); // Convert names to uppercase for case-insensitive sorting
+    const nameB = b.name.toUpperCase();
+
+    if (nameA < nameB) {
+      return -1; // a should come before b
+    } else if (nameA > nameB) {
+      return 1; // b should come before a
+    } else {
+      return 0; // names are equal, maintain original order
+    }
+  });
+
+  return objects;
+}

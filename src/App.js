@@ -31,8 +31,8 @@ const titles = {
     document: "Kindergartenwahl: Suche",
   },
   "/results": {
-    header: "Suchergebnisse",
-    document: "Kindergartenwahl: Suchergebnisse",
+    header: "Liste der Kindergärten",
+    document: "Kindergartenwahl: Liste der Kindergärten",
   },
   "/details": {
     header: "Details",

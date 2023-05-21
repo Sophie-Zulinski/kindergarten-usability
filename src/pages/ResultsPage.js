@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { MobileStepper, TextField } from "@mui/material";
-import { ArrowBack } from "@mui/icons-material";
-import { Link, useLocation } from "react-router-dom";
-import { StyledBackButton } from "../components/StyledBackButton";
+import { useLocation } from "react-router-dom";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { kindergartens } from "../data/kindergartens";
 import KindergartenShow from "../components/KindergartenShow";
 import { FilterAlt } from "@mui/icons-material";
+import { sortObjectsByName } from "../utils/utils";
 
 function ResultsPage({ title }) {
   const [searchField, setSearchField] = useState("");
@@ -26,7 +25,9 @@ function ResultsPage({ title }) {
     setSearchField(e.target.value);
   };
 
-  const filteredKigas = kindergartens.filter((kiga) => {
+  const sortedKigas = sortObjectsByName(kindergartens);
+
+  const filteredKigas = sortedKigas.filter((kiga) => {
     return kiga.name.toLowerCase().includes(searchField.toLowerCase());
   });
 
@@ -45,34 +46,21 @@ function ResultsPage({ title }) {
         />
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
-      <div className="row search-field">
+      <div className="row search-field center-vertical">
         <FilterAlt sx={{ color: "secondary", mr: 1, my: 0.5 }} />
         <TextField
+          variant="outlined"
           fullWidth
           color="secondary"
           id="search"
-          label="Filtern"
-          variant="standard"
+          label="Nach Kindergartenname filtern"
           onChange={handleChange}
         />
       </div>
       {filteredKigas.map((kiga, index) => (
         <KindergartenShow key={index} kiga={kiga} state={state} />
       ))}
-      <div className="col center-all">
-        <h3 className="bottomline">Nichts passendes dabei?</h3>
-        <StyledBackButton
-          startIcon={<ArrowBack />}
-          variant="contained"
-          sx={{
-            width: 250,
-            marginTop: "24px",
-            marginBottom: "156px",
-          }}
-        >
-          <Link to="/search">Neue Suche starten</Link>
-        </StyledBackButton>
-      </div>
+      <div className="bottom-spacer"></div>
     </div>
   );
 }

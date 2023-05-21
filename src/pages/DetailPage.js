@@ -82,21 +82,21 @@ function DetailPage({ title }) {
       </div>
       <div>
         <Paper>
-          <div className="box col">
+          <div className="result-box col">
             <img
               alt="Kindergarten"
               src={`/images/kiga_${kiga.id}.png`}
               className="result-pic"
             />
             <div className="col">
-              <h3 className="result-headline">{kiga.name}</h3>
+              <h3 className="detail-headline">{kiga.name}</h3>
               <div className="row center-vertical">
                 <Map className="result-icon" />
                 <p>{kiga.street}</p>
               </div>
               <div className="row center-vertical">
                 <LocationOn className="result-icon" />
-                <p>{district}</p>
+                <p>{district === "" ? kiga.district : district}</p>
               </div>
               <div className="row center-vertical">
                 <AccessTime className="result-icon" />

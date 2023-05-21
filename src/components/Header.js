@@ -3,10 +3,10 @@ import {
   AccountCircleOutlined,
   HelpOutline,
   Close,
-  ArrowRight,
+  PinDrop,
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header({ title }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,7 +80,7 @@ function Header({ title }) {
           </IconButton>
         </div>
         <div className="header-title row center-vertical">
-          <ArrowRight />
+          <PinDrop sx={{ marginLeft: "10px", marginRight: "6px" }} />
           {title}
         </div>
       </div>

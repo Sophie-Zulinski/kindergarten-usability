@@ -15,34 +15,42 @@ import Footer from "./components/Footer";
 
 const titles = {
   "/": {
+    route: "",
     header: "Home",
     document: "Kindergartenwahl",
   },
   "/home": {
+    route: "home",
     header: "Home",
     document: "Kindergartenwahl",
   },
   "/information": {
+    route: "information",
     header: "Informationen",
     document: "Kindergartenwahl: Informationen",
   },
   "/search": {
+    route: "search",
     header: "Suche",
     document: "Kindergartenwahl: Suche",
   },
   "/results": {
+    route: "results",
     header: "Liste der verfügbaren Kindergärten",
     document: "Kindergartenwahl: Liste der verfügbaren Kindergärten",
   },
   "/details": {
+    route: "details",
     header: "Details",
     document: "Kindergartenwahl: Details",
   },
   "/inquiry": {
+    route: "inquiry",
     header: "Anfrage senden",
     document: "Kindergartenwahl: Anfrage senden",
   },
   "/success": {
+    route: "success",
     header: "Anfrage",
     document: "Kindergartenwahl: Anfrage versandt",
   },
@@ -94,7 +102,11 @@ function App() {
         />
         <Route path="*" element={<ErrorPage title={documentTitle} />} />
       </Routes>
-      {!showLandingPage ? <Footer /> : ""}
+      {!showLandingPage ? (
+        <Footer route={titles[location.pathname].route} />
+      ) : (
+        ""
+      )}
     </ThemeProvider>
   );
 }

@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import {
-  Search,
+  Pageview,
+  PageviewOutlined,
   InfoOutlined,
-  FormatListNumberedOutlined,
+  Info,
+  FeaturedPlayList,
+  FeaturedPlayListOutlined,
 } from "@mui/icons-material";
 
-function Footer() {
+function Footer({ route }) {
   const navigate = useNavigate();
 
   const openSearch = () => {
@@ -37,9 +40,14 @@ function Footer() {
       <div className="footer-menu footer-menu-left col center-vertical">
         <IconButton
           onClick={handleClickResultsList}
+          color="secondary"
           sx={{ padding: "0 0 5px 0" }}
         >
-          <FormatListNumberedOutlined />
+          {route === "results" ? (
+            <FeaturedPlayList />
+          ) : (
+            <FeaturedPlayListOutlined />
+          )}
         </IconButton>
         <p>Übersicht</p>
       </div>
@@ -50,7 +58,7 @@ function Footer() {
           color="secondary"
           sx={{ padding: "0 0 5px 0" }}
         >
-          <Search />
+          {route === "search" ? <Pageview /> : <PageviewOutlined />}
         </IconButton>
         <p>Suche</p>
       </div>
@@ -61,7 +69,7 @@ function Footer() {
           color="secondary"
           sx={{ padding: "0 0 5px 0" }}
         >
-          <InfoOutlined />
+          {route === "information" ? <Info /> : <InfoOutlined />}
         </IconButton>
         <p>Infos</p>
       </div>

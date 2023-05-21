@@ -3,7 +3,7 @@ import {
   AccountCircleOutlined,
   HelpOutline,
   Close,
-  PinDrop,
+  Help,
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +67,7 @@ function Header({ title }) {
             color="secondary"
             sx={{ marginLeft: "14px" }}
           >
-            <HelpOutline />
+            {isModalOpen ? <Help /> : <HelpOutline />}
           </IconButton>
           <img
             src="/images/kindergarten_text_header.png"
@@ -79,9 +79,8 @@ function Header({ title }) {
             <AccountCircleOutlined />
           </IconButton>
         </div>
-        <div className="header-title row center-vertical">
-          <PinDrop sx={{ marginLeft: "10px", marginRight: "6px" }} />
-          {title}
+        <div className="header-title-box row center-all">
+          <p className="header-title">{title}</p>
         </div>
       </div>
     </>

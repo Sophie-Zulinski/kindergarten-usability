@@ -112,7 +112,7 @@ function InquiryPage({ title }) {
     <div className="container col">
       <ScrollToTopButton />
       {initialError === 1 && (
-        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+        <div className="snackbar snackbar-warn row">
           <ErrorOutline />
           <div className="col">
             <p className="snackbar-text">Technischer Fehler.</p>

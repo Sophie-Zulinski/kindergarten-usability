@@ -16,10 +16,10 @@ import { StyledMainButton } from "../components/StyledMainButton";
 import { districts } from "../data/districts";
 
 const groupSizeOptions = [
-  "S - weniger als 5 Kinder",
-  "M - bis zu 10 Kinder",
-  "L - bis zu 15 Kinder",
-  "XL - mehr als 15 Kinder",
+  "S - klein",
+  "M - mittelgroß",
+  "L - groß",
+  "XL - sehr groß",
 ];
 
 const publicOrPrivateOptions = ["", "Öffentlich", "Privat"];

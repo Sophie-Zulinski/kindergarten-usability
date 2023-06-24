@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { MobileStepper, TextField } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-import { kindergartens } from "../data/kindergartens";
-import KindergartenShow from "../components/KindergartenShow";
-import { FilterAlt } from "@mui/icons-material";
-import { sortObjectsByName } from "../utils/utils";
+import { FilterAlt } from '@mui/icons-material';
+import { MobileStepper, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import KindergartenShow from '../components/KindergartenShow.js';
+import ScrollToTopButton from '../components/ScrollToTopButton.js';
+import { kindergartens } from '../data/kindergartens.js';
+import { sortObjectsByName } from '../utils/utils.js';
 
 function ResultsPage({ title }) {
-  const [searchField, setSearchField] = useState("");
+  const [searchField, setSearchField] = useState('');
   const { pathname, state } = useLocation();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function ResultsPage({ title }) {
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
       <div className="row search-field center-vertical">
-        <FilterAlt sx={{ color: "secondary", mr: 1, my: 0.5 }} />
+        <FilterAlt sx={{ color: 'secondary', mr: 1, my: 0.5 }} />
         <TextField
           variant="outlined"
           fullWidth
@@ -56,9 +56,10 @@ function ResultsPage({ title }) {
           onChange={handleChange}
         />
       </div>
+      {/* 4. Input element
       {filteredKigas.map((kiga, index) => (
         <KindergartenShow key={index} kiga={kiga} state={state} />
-      ))}
+      ))}*/}
       <div className="bottom-spacer"></div>
     </div>
   );

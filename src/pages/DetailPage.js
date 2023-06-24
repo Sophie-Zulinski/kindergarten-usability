@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import { StyledBackButton } from "../components/StyledBackButton";
-import { StyledMainButton } from "../components/StyledMainButton";
-import { Paper, MobileStepper, LinearProgress, Chip } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
 import {
-  ArrowBack,
-  Send,
   AccessTime,
+  ArrowBack,
   BubbleChart,
   ChildCare,
   LocationOn,
   Map,
   Public,
-} from "@mui/icons-material";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-import { joinAbbreviations } from "../utils/utils";
+  Send,
+} from '@mui/icons-material';
+import { Chip, LinearProgress, MobileStepper, Paper } from '@mui/material';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import ScrollToTopButton from '../components/ScrollToTopButton.js';
+import { StyledBackButton } from '../components/StyledBackButton.js';
+import { StyledMainButton } from '../components/StyledMainButton.js';
+import { joinAbbreviations } from '../utils/utils.js';
 
 function DetailPage({ title }) {
   const { pathname, state } = useLocation();
@@ -47,7 +47,7 @@ function DetailPage({ title }) {
 
   const handleInquiryClick = (e) => {
     e.preventDefault();
-    navigate("/inquiry", {
+    navigate('/inquiry', {
       state: {
         kiga,
         searchParams,
@@ -57,7 +57,7 @@ function DetailPage({ title }) {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate("/results", {
+    navigate('/results', {
       state: {
         kiga,
         searchParams,
@@ -95,13 +95,13 @@ function DetailPage({ title }) {
               </div>
               <div className="row center-vertical">
                 <LocationOn className="result-icon" />
-                <p>{district === "" ? kiga.district : district}</p>
+                <p>{district === '' ? kiga.district : district}</p>
               </div>
               <div className="row center-vertical">
                 <AccessTime className="result-icon" />
                 <p>
                   {allOpeningHours.length === 0
-                    ? kiga.openingHours.join(", ")
+                    ? kiga.openingHours.join(', ')
                     : openingHours}
                 </p>
               </div>
@@ -109,7 +109,7 @@ function DetailPage({ title }) {
                 <BubbleChart className="result-icon" />
                 <p>
                   {allGroupSizes.length === 0
-                    ? kiga.groupSizes.join(", ")
+                    ? kiga.groupSizes.join(', ')
                     : groupSizes}
                 </p>
               </div>
@@ -117,14 +117,14 @@ function DetailPage({ title }) {
                 <ChildCare className="result-icon" />
                 <p>
                   {allAgeGroups.length === 0
-                    ? kiga.ageGroups.join(", ")
+                    ? kiga.ageGroups.join(', ')
                     : ageGroups}
                 </p>
               </div>
               <div className="row center-vertical">
                 <Public className="result-icon" />
                 <p>
-                  {publicOrPrivate === ""
+                  {publicOrPrivate === ''
                     ? kiga.publicOrPrivate
                     : publicOrPrivate}
                 </p>
@@ -135,9 +135,9 @@ function DetailPage({ title }) {
               variant="determinate"
               value={availabilityRate}
               sx={{
-                height: "10px",
-                borderRadius: "5px",
-                backgroundColor: "#EEEEEE",
+                height: '10px',
+                borderRadius: '5px',
+                backgroundColor: '#EEEEEE',
               }}
             />
             <div className="row chip-box">
@@ -145,39 +145,39 @@ function DetailPage({ title }) {
                 <Chip
                   label="LGBTIQ+"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
                 <Chip
                   label="Glutenfrei"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
                 <Chip
                   label="Ausflüge"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
               </div>
               <div className="col chip-box-col">
                 <Chip
                   label="Vegetarisch"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
                 <Chip
                   label="Garten"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
                 <Chip
                   label="Ganztags"
                   color="primary"
-                  style={{ width: "117px" }}
+                  style={{ width: '117px' }}
                 />
               </div>
             </div>
             <div className="kiga-text">
-              {" "}
+              {' '}
               Hallo!
               <br />
               Wir sind der Kindergarten <b>{kiga.name} 😄</b>
@@ -185,23 +185,23 @@ function DetailPage({ title }) {
               <b>
                 Wir freuen uns sehr, dass du dich für unseren Kindergarten
                 interessierst!
-              </b>{" "}
+              </b>{' '}
               🙋
               <br />
               <br />
-              Wir befinden uns{" "}
+              Wir befinden uns{' '}
               <b>mitten im Zentrum des wunderschönen {district}s in Wien</b>
-              🏡 und{" "}
+              🏡 und{' '}
               <b>
                 bieten neben kleinen (S) auch mittelgroßen (M) Gruppengrößen
               </b>
               . Wir freuen uns sehr Kinder von <b>0 - 5</b> Jahren in unserem
-              Haus begrüßen zu dürfen und verfolgen das Konzept der{" "}
+              Haus begrüßen zu dürfen und verfolgen das Konzept der{' '}
               <b>altermäßig gemischten Gruppen</b>. 👩‍👧‍👦
               <br />
               <br />
               Neben gewöhnlichem <b>Mittagessen</b> 🍲 gibt es bei uns außerdem
-              die Option zwischen{" "}
+              die Option zwischen{' '}
               <b>vegetarischen 🥬 sowie glutenfreien 🌾 Menüs</b> zu wählen.
               Bitte gib uns das wenn möglich gleich zu Beginn bei der Anfrage
               bzw. Anmeldung bekannt! So kann sichergestellt werden, dass gleich
@@ -214,7 +214,7 @@ function DetailPage({ title }) {
               auf unserem Programm!
               <br />
               <br />
-              Ganz besonders freuen wir uns auch über{" "}
+              Ganz besonders freuen wir uns auch über{' '}
               <b>Kinder von Regenbogenfamilien</b> 🌈 🌈 🌈
               <br />
               <br />
@@ -229,7 +229,7 @@ function DetailPage({ title }) {
           startIcon={<Send />}
           variant="contained"
           sx={{
-            marginBottom: "25px",
+            marginBottom: '25px',
           }}
           onClick={handleInquiryClick}
         >
@@ -242,8 +242,8 @@ function DetailPage({ title }) {
           variant="contained"
           sx={{
             width: 250,
-            marginTop: "24px",
-            marginBottom: "88px",
+            marginTop: '24px',
+            marginBottom: '88px',
           }}
           onClick={handleBackClick}
         >

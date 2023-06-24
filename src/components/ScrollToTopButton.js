@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp.js';
+import { useEffect, useState } from 'react';
 
 function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         setIsVisible(true);
       } else {
@@ -17,13 +17,13 @@ function ScrollToTopButton() {
   const goTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   return (
     <button
-      style={{ display: isVisible ? "block" : "none" }}
+      style={{ display: isVisible ? 'block' : 'none' }}
       className="btn__up"
       onClick={goTop}
     >

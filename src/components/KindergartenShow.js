@@ -5,10 +5,10 @@ import {
   LocationOn,
   Map,
   Public,
-} from "@mui/icons-material";
-import { Paper } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { joinAbbreviations } from "../utils/utils";
+} from '@mui/icons-material';
+import { Paper } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { joinAbbreviations } from '../utils/utils.js';
 
 function KindergartenShow({ kiga, index, state }) {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function KindergartenShow({ kiga, index, state }) {
 
   const showDetails = (e) => {
     e.preventDefault();
-    navigate("/details", {
+    navigate('/details', {
       state: {
         kiga,
         searchParams,
@@ -54,13 +54,13 @@ function KindergartenShow({ kiga, index, state }) {
             </div>
             <div className="row center-vertical">
               <LocationOn className="result-icon" />
-              <p>{district === "" ? kiga.district : district}</p>
+              <p>{district === '' ? kiga.district : district}</p>
             </div>
             <div className="row center-vertical">
               <AccessTime className="result-icon" />
               <p>
                 {allOpeningHours.length === 0
-                  ? kiga.openingHours.join(", ")
+                  ? kiga.openingHours.join(', ')
                   : openingHours}
               </p>
             </div>
@@ -68,7 +68,7 @@ function KindergartenShow({ kiga, index, state }) {
               <BubbleChart className="result-icon" />
               <p>
                 {allGroupSizes.length === 0
-                  ? kiga.groupSizes.join(", ")
+                  ? kiga.groupSizes.join(', ')
                   : groupSizes}
               </p>
             </div>
@@ -76,14 +76,14 @@ function KindergartenShow({ kiga, index, state }) {
               <ChildCare className="result-icon" />
               <p>
                 {allAgeGroups.length === 0
-                  ? kiga.ageGroups.join(", ")
+                  ? kiga.ageGroups.join(', ')
                   : ageGroups}
               </p>
             </div>
             <div className="row center-vertical">
               <Public className="result-icon" />
               <p>
-                {publicOrPrivate === ""
+                {publicOrPrivate === ''
                   ? kiga.publicOrPrivate
                   : publicOrPrivate}
               </p>

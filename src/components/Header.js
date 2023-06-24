@@ -1,12 +1,12 @@
-import { useState } from "react";
 import {
   AccountCircleOutlined,
-  HelpOutline,
   Close,
   Help,
-} from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+  HelpOutline,
+} from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ title }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,15 +23,16 @@ function Header({ title }) {
   return (
     <>
       {isModalOpen && (
-        <div className="modal-backdrop" onClick={closeHelp}>
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+        <div className="modal-backdrop">
           <div className="modal">
             <IconButton
               className="close-button"
               onClick={closeHelp}
               sx={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
               }}
             >
               <Close />
@@ -65,7 +66,7 @@ function Header({ title }) {
           <IconButton
             onClick={openHelp}
             color="secondary"
-            sx={{ marginLeft: "14px" }}
+            sx={{ marginLeft: '14px' }}
           >
             {isModalOpen ? <Help /> : <HelpOutline />}
           </IconButton>
@@ -73,9 +74,8 @@ function Header({ title }) {
             src="/images/kindergarten_text_header.png"
             alt="Kindergarten"
             className="logo-header"
-            onClick={() => navigate("/home")}
-          ></img>
-          <IconButton color="secondary" sx={{ marginRight: "14px" }}>
+          />
+          <IconButton color="secondary" sx={{ marginRight: '14px' }}>
             <AccountCircleOutlined />
           </IconButton>
         </div>

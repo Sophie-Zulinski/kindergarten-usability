@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { Search } from "@mui/icons-material";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-import { StyledMainButton } from "../components/StyledMainButton";
-import { Link } from "react-router-dom";
+import { Search } from '@mui/icons-material';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ScrollToTopButton from '../components/ScrollToTopButton.js';
+import { StyledMainButton } from '../components/StyledMainButton.js';
 
 function InformationPage({ title }) {
   useEffect(() => {
@@ -124,7 +124,7 @@ function InformationPage({ title }) {
             startIcon={<Search />}
             variant="contained"
             sx={{
-              marginBottom: "88px",
+              marginBottom: '88px',
             }}
           >
             <Link to="/search">Zur Suche</Link>

@@ -1,37 +1,37 @@
-import { useEffect, useState } from "react";
+import { ErrorOutline, Search } from '@mui/icons-material';
 import {
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  FormHelperText,
-  OutlinedInput,
   Checkbox,
-  ListItemText,
   CircularProgress,
-} from "@mui/material";
-import { Search, ErrorOutline } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { StyledMainButton } from "../components/StyledMainButton";
-import { districts } from "../data/districts";
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+} from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { StyledMainButton } from '../components/StyledMainButton.js';
+import { districts } from '../data/districts.js';
 
 const groupSizeOptions = [
-  "S - klein",
-  "M - mittelgroß",
-  "L - groß",
-  "XL - sehr groß",
+  'S - klein',
+  'M - mittelgroß',
+  'L - groß',
+  'XL - sehr groß',
 ];
 
-const publicOrPrivateOptions = ["", "Öffentlich", "Privat"];
+const publicOrPrivateOptions = ['', 'Öffentlich', 'Privat'];
 
 const openingHoursOptions = [
-  "H - Stundenweise",
-  "VM - Vormittags",
-  "NM - Nachmittags",
-  "GT - Ganztags",
+  'H - Stundenweise',
+  'VM - Vormittags',
+  'NM - Nachmittags',
+  'GT - Ganztags',
 ];
 
-const ageGroupsOptions = ["0-2 Jahre", "3-4 Jahre", "5 Jahre"];
+const ageGroupsOptions = ['0-2 Jahre', '3-4 Jahre', '5 Jahre'];
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -49,12 +49,12 @@ function SearchPage({ title }) {
   const [showSpinner, setShowSpinner] = useState(false);
   const [showSnackError, setShowSnackError] = useState(false);
 
-  const [district, setDistrict] = useState("");
+  const [district, setDistrict] = useState('');
   const [districtError, setDistrictError] = useState(false);
   const [allOpeningHours, setAllOpeningHours] = useState([]);
   const [allGroupSizes, setAllGroupSizes] = useState([]);
   const [allAgeGroups, setAllAgeGroups] = useState([]);
-  const [publicOrPrivate, setPublicOrPrivate] = useState("");
+  const [publicOrPrivate, setPublicOrPrivate] = useState('');
 
   useEffect(() => {
     document.title = title;
@@ -62,13 +62,13 @@ function SearchPage({ title }) {
 
   const startSearch = (e) => {
     e.preventDefault();
-    setDistrictError(district === "" ? true : false);
-    if (district !== "") {
+    setDistrictError(district === '' ? true : false);
+    if (district !== '') {
       if (
         allOpeningHours.length === 0 &&
         allGroupSizes.length === 0 &&
         allAgeGroups.length === 0 &&
-        publicOrPrivate === ""
+        publicOrPrivate === ''
       ) {
         setShowSnackError(true);
       } else {
@@ -76,7 +76,7 @@ function SearchPage({ title }) {
 
         setTimeout(() => {
           setShowSpinner(false);
-          navigate("/results", {
+          navigate('/results', {
             state: {
               kiga: {},
               searchParams: {
@@ -98,7 +98,7 @@ function SearchPage({ title }) {
     const {
       target: { value },
     } = event;
-    setAllOpeningHours(typeof value === "string" ? value.split(",") : value);
+    setAllOpeningHours(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleAgeGroupsChange = (event) => {
@@ -106,7 +106,7 @@ function SearchPage({ title }) {
     const {
       target: { value },
     } = event;
-    setAllAgeGroups(typeof value === "string" ? value.split(",") : value);
+    setAllAgeGroups(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleGroupSizeChange = (event) => {
@@ -114,14 +114,14 @@ function SearchPage({ title }) {
     const {
       target: { value },
     } = event;
-    setAllGroupSizes(typeof value === "string" ? value.split(",") : value);
+    setAllGroupSizes(typeof value === 'string' ? value.split(',') : value);
   };
 
   return (
     <div className="container col">
       {showSpinner && (
         <div className="snackbar snackbar-info row snackbar-bottom-search">
-          <CircularProgress size="1rem" sx={{ color: "white" }} />
+          <CircularProgress size="1rem" sx={{ color: 'white' }} />
           <p className="snackbar-text">Daten laden...</p>
         </div>
       )}
@@ -136,7 +136,7 @@ function SearchPage({ title }) {
           required
           color="secondary"
           fullWidth
-          sx={{ marginBottom: "15px" }}
+          sx={{ marginBottom: '15px' }}
           error={districtError}
         >
           <InputLabel id="district">Bezirk</InputLabel>
@@ -157,15 +157,15 @@ function SearchPage({ title }) {
             ))}
           </Select>
           {districtError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               Bitte Bezirk angeben!
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
 
-        <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl color="secondary" fullWidth sx={{ marginBottom: '15px' }}>
           <InputLabel id="openingHours">Betreuungszeiten</InputLabel>
           <Select
             labelId="openingHours"
@@ -174,7 +174,7 @@ function SearchPage({ title }) {
             value={allOpeningHours}
             onChange={handleOpeningHoursChange}
             input={<OutlinedInput label="Betreuungszeiten" />}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
           >
             {openingHoursOptions.map((openingHours) => (
@@ -189,7 +189,7 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
 
-        <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl color="secondary" fullWidth sx={{ marginBottom: '15px' }}>
           <InputLabel id="group-size">Gruppengröße</InputLabel>
           <Select
             labelId="groupSizes"
@@ -198,7 +198,7 @@ function SearchPage({ title }) {
             value={allGroupSizes}
             onChange={handleGroupSizeChange}
             input={<OutlinedInput label="Gruppengröße" />}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
           >
             {groupSizeOptions.map((groupSize) => (
@@ -213,7 +213,7 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
 
-        <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl color="secondary" fullWidth sx={{ marginBottom: '15px' }}>
           <InputLabel id="openingHours">Altersgruppen</InputLabel>
           <Select
             labelId="ageGroups"
@@ -222,7 +222,7 @@ function SearchPage({ title }) {
             value={allAgeGroups}
             onChange={handleAgeGroupsChange}
             input={<OutlinedInput label="Altersgruppen" />}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
           >
             {ageGroupsOptions.map((ageGroup) => (
@@ -237,7 +237,7 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
 
-        <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl color="secondary" fullWidth sx={{ marginBottom: '15px' }}>
           <InputLabel id="publicOrPrivate">Öffentlich / Privat</InputLabel>
           <Select
             labelId="publicOrPrivate"
@@ -273,7 +273,7 @@ function SearchPage({ title }) {
           disabled={showSpinner || showSnackError}
           className="btn__start"
           sx={{
-            marginBottom: "100px",
+            marginBottom: '100px',
           }}
           onClick={startSearch}
         >

@@ -1,8 +1,8 @@
-import { MobileStepper } from "@mui/material";
-import { useEffect } from "react";
-import { ArrowBack } from "@mui/icons-material";
-import { StyledMainButton } from "../components/StyledMainButton";
-import { Link } from "react-router-dom";
+import { ArrowBack } from '@mui/icons-material';
+import { MobileStepper } from '@mui/material';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { StyledMainButton } from '../components/StyledMainButton.js';
 
 function SuccessPage({ title }) {
   useEffect(() => {
@@ -34,7 +34,7 @@ function SuccessPage({ title }) {
           startIcon={<ArrowBack />}
           variant="contained"
           sx={{
-            marginBottom: "100px",
+            marginBottom: '100px',
           }}
         >
           <Link to="/search">Zurück zur Suche</Link>

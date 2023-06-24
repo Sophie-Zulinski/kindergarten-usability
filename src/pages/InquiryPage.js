@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
+import { ArrowBack, ArrowForward, ErrorOutline } from '@mui/icons-material';
 import {
-  TextField,
-  MobileStepper,
-  FormHelperText,
-  FormControl,
   Alert,
-} from "@mui/material";
-import { StyledBackButton } from "../components/StyledBackButton";
-import { StyledMainButton } from "../components/StyledMainButton";
-import ScrollToTopButton from "../components/ScrollToTopButton";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack, ArrowForward, ErrorOutline } from "@mui/icons-material";
-import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
+  FormControl,
+  FormHelperText,
+  MobileStepper,
+  TextField,
+} from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import ScrollToTopButton from '../components/ScrollToTopButton.js';
+import { StyledBackButton } from '../components/StyledBackButton.js';
+import { StyledMainButton } from '../components/StyledMainButton.js';
+import { isMailAddress, isNumber, isPhoneNumber } from '../utils/utils.js';
 
 function InquiryPage({ title }) {
   const navigate = useNavigate();
@@ -30,80 +30,80 @@ function InquiryPage({ title }) {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate("/details", {
+    navigate('/details', {
       state,
     });
   };
 
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState('');
   const [firstNameError, setFirstNameError] = useState(false);
 
-  const [lastName, setLastName] = useState("");
+  const [lastName, setLastName] = useState('');
   const [lastNameError, setLastNameError] = useState(false);
 
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState(
-    "Bitte Telefonnummer angeben!"
+    'Bitte Telefonnummer angeben!',
   );
 
-  const [mailAddress, setMailAddress] = useState("");
+  const [mailAddress, setMailAddress] = useState('');
   const [mailAddressError, setMailAddressError] = useState(false);
   const [mailAddressErrorMessage, setMailAddressErrorMessage] = useState(
-    "Bitte E-Mail-Adresse angeben!"
+    'Bitte E-Mail-Adresse angeben!',
   );
 
-  const [childFirstName, setChildFirstName] = useState("");
+  const [childFirstName, setChildFirstName] = useState('');
   const [childFirstNameError, setChildFirstNameError] = useState(false);
 
-  const [childLastName, setChildLastName] = useState("");
+  const [childLastName, setChildLastName] = useState('');
   const [childLastNameError, setChildLastNameError] = useState(false);
 
-  const [childAge, setChildAge] = useState("");
+  const [childAge, setChildAge] = useState('');
   const [childAgeError, setChildAgeError] = useState(false);
   const [childAgeErrorMessage, setChildAgeErrorMessage] = useState(
-    "Bitte Alter angeben!"
+    'Bitte Alter angeben!',
   );
 
   const sendInquiry = (e) => {
     e.preventDefault();
-    setFirstNameError(firstName === "" ? true : false);
-    setLastNameError(lastName === "" ? true : false);
+    setFirstNameError(firstName === '' ? true : false);
+    setLastNameError(lastName === '' ? true : false);
     setPhoneNumberError(
-      phoneNumber === "" || !isPhoneNumber(phoneNumber) ? true : false
+      phoneNumber === '' || !isPhoneNumber(phoneNumber) ? true : false,
     );
-    phoneNumber !== "" &&
+    phoneNumber !== '' &&
       !isPhoneNumber(phoneNumber) &&
-      setPhoneNumberErrorMessage("Ungültiges Format!");
+      setPhoneNumberErrorMessage('Ungültiges Format!');
     setMailAddressError(
-      mailAddress === "" || !isMailAddress(mailAddress) ? true : false
+      mailAddress === '' || !isMailAddress(mailAddress) ? true : false,
     );
-    mailAddress !== "" &&
+    mailAddress !== '' &&
       !isMailAddress(mailAddress) &&
-      setMailAddressErrorMessage("Ungültiges Format!");
-    setChildFirstNameError(childFirstName === "" ? true : false);
-    setChildLastNameError(childLastName === "" ? true : false);
-    setChildAgeError(childAge === "" || !isNumber(childAge) ? true : false);
-    childAge !== "" &&
+      setMailAddressErrorMessage('Ungültiges Format!');
+    setChildFirstNameError(childFirstName === '' ? true : false);
+    setChildLastNameError(childLastName === '' ? true : false);
+    setChildAgeError(childAge === '' || !isNumber(childAge) ? true : false);
+    childAge !== '' &&
       !isNumber(childAge) &&
-      setChildAgeErrorMessage("Ungültiges Format!");
+      setChildAgeErrorMessage('Ungültiges Format!');
 
     if (
-      firstName !== "" &&
-      lastName !== "" &&
-      phoneNumber !== "" &&
+      firstName !== '' &&
+      lastName !== '' &&
+      phoneNumber !== '' &&
       isPhoneNumber(phoneNumber) &&
-      mailAddress !== "" &&
+      mailAddress !== '' &&
       isMailAddress(mailAddress) &&
-      childFirstName !== "" &&
-      childLastName !== "" &&
-      childAge !== "" &&
+      childFirstName !== '' &&
+      childLastName !== '' &&
+      childAge !== '' &&
       isNumber(childAge)
     ) {
       setInitialError(initialError + 1);
 
       if (initialError === 1) {
-        navigate("/success");
+        navigate('/success');
       }
     }
   };
@@ -137,7 +137,7 @@ function InquiryPage({ title }) {
         </p>
       </div>
       <div className="input-box">
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             required
             color="secondary"
@@ -152,14 +152,14 @@ function InquiryPage({ title }) {
             error={firstNameError}
           />
           {firstNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               Bitte Vornamen angeben!
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -175,14 +175,14 @@ function InquiryPage({ title }) {
             error={lastNameError}
           />
           {lastNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               Bitte Nachnamen angeben!
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -198,14 +198,14 @@ function InquiryPage({ title }) {
             error={phoneNumberError}
           />
           {phoneNumberError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               {phoneNumberErrorMessage}
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -221,11 +221,11 @@ function InquiryPage({ title }) {
             error={mailAddressError}
           />
           {mailAddressError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               {mailAddressErrorMessage}
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
       </div>
@@ -236,7 +236,7 @@ function InquiryPage({ title }) {
         </p>
       </div>
       <div className="input-box">
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -252,14 +252,14 @@ function InquiryPage({ title }) {
             error={childFirstNameError}
           />
           {childFirstNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               Bitte Vornamen angeben!
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -275,14 +275,14 @@ function InquiryPage({ title }) {
             error={childLastNameError}
           />
           {childLastNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               Bitte Nachnamen angeben!
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ marginBottom: "15px" }}>
+        <FormControl fullWidth sx={{ marginBottom: '15px' }}>
           <TextField
             fullWidth
             required
@@ -298,12 +298,12 @@ function InquiryPage({ title }) {
             error={childAgeError}
           />
           {childAgeError ? (
-            <FormHelperText sx={{ color: "red" }}>
+            <FormHelperText sx={{ color: 'red' }}>
               {isNumber(childAge)}
               {childAgeErrorMessage}
             </FormHelperText>
           ) : (
-            ""
+            ''
           )}
         </FormControl>
       </div>
@@ -331,7 +331,7 @@ function InquiryPage({ title }) {
             startIcon={<ArrowForward />}
             variant="contained"
             sx={{
-              marginBottom: "25px",
+              marginBottom: '25px',
             }}
             onClick={sendInquiry}
           >
@@ -343,8 +343,8 @@ function InquiryPage({ title }) {
             variant="contained"
             sx={{
               width: 250,
-              marginTop: "24px",
-              marginBottom: "88px",
+              marginTop: '24px',
+              marginBottom: '88px',
             }}
             onClick={handleBackClick}
           >

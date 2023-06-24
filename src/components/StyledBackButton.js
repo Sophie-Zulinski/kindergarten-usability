@@ -1,6 +1,6 @@
-import {styled} from "@mui/material/styles";
-import {Button} from "@mui/material";
-import theme, { mediumGrey } from "../styles/theme";
+import { Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import theme, { mediumGrey } from '../styles/theme.js';
 
 export const StyledBackButton = styled(Button)({
   color: theme.palette.secondary.main,

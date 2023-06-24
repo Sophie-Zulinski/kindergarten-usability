@@ -2,6 +2,7 @@ import { FilterAlt } from '@mui/icons-material';
 import { MobileStepper, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { IndexKind } from 'typescript';
 import KindergartenShow from '../components/KindergartenShow.js';
 import ScrollToTopButton from '../components/ScrollToTopButton.js';
 import { kindergartens } from '../data/kindergartens.js';
@@ -56,10 +57,10 @@ function ResultsPage({ title }) {
           onChange={handleChange}
         />
       </div>
-      {/* 4. Input element
+      {/* fixed: kiga.name instead of "index" (was not working with "index"*/}
       {filteredKigas.map((kiga, index) => (
-        <KindergartenShow key={index} kiga={kiga} state={state} />
-      ))}*/}
+        <KindergartenShow key={kiga.name} kiga={kiga} state={state} />
+      ))}
       <div className="bottom-spacer"></div>
     </div>
   );

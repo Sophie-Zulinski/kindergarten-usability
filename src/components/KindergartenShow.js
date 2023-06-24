@@ -8,7 +8,7 @@ import {
 } from '@mui/icons-material';
 import { Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { joinAbbreviations } from '../utils/utils.js';
+import { joinAbbreviations } from '../utils/utils';
 
 function KindergartenShow({ kiga, index, state }) {
   const navigate = useNavigate();
@@ -38,7 +38,11 @@ function KindergartenShow({ kiga, index, state }) {
   };
 
   return (
-    <Paper key={index} className="result-container" onClick={showDetails}>
+    <Paper
+      key={`kiga-${index}`}
+      className="result-container"
+      onClick={showDetails}
+    >
       <div className="result-box col">
         <h3 className="result-headline">{kiga.name}</h3>
         <div className="row">

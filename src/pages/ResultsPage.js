@@ -44,7 +44,7 @@ function ResultsPage({ title }) {
           backButton={null}
           nextButton={null}
         />
-        <h3 className="headline">Wähle den passenden Kindergarten</h3>
+        <h3 className="headline">Wähle den passenden Kindergarten:</h3>
       </div>
       <div className="row search-field center-vertical">
         <FilterAlt sx={{ color: 'secondary', mr: 1, my: 0.5 }} />

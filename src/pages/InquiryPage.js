@@ -133,7 +133,7 @@ function InquiryPage({ title }) {
         />
         <h3 className="headline">Daten zu deiner Person:</h3>
         <p className="required-description">
-          Die mit * gekennzeichneten Felder sind verpflichtend
+          Die mit * gekennzeichneten Felder sind verpflichtend:
         </p>
       </div>
       <div className="input-box">
